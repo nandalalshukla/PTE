@@ -7,9 +7,10 @@ export default function DesktopNavbar() {
   const pathname = usePathname();
 
   const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
     { name: "Courses", href: "/courses" },
+    { name: "About Us", href: "/about" },
+    { name: "Instructors", href: "/instructors" },
+    { name: "Study", href: "/study" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -20,26 +21,35 @@ export default function DesktopNavbar() {
           PassTheExcellence
         </div>
 
-        <ul className="flex gap-10 text-lg font-medium">
+        <ul className="flex items-center gap-10 text-lg font-medium">
           {links.map((link) => {
             const isActive = pathname === link.href;
+
             return (
-              <li key={link.href}>
+              <li key={link.href} className="relative group">
                 <Link
                   href={link.href}
-                  className={
+                  className={`transition-colors duration-300 ${
                     isActive
-                      ? "text-yellow-600 font-semibold border-b-2 border-blue-300 pb-1"
-                      : " hover:text-yellow-600 transition"
-                  }
+                      ? "text-yellow-600 font-semibold"
+                      : "hover:text-yellow-600"
+                  }`}
                 >
                   {link.name}
                 </Link>
+
+                <span
+                  className={`absolute left-0 -bottom-1 h-[3px] bg-yellow-600 rounded-full
+    transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+    ${isActive ? "w-full" : "w-0 group-hover:w-full"}
+  `}
+                ></span>
               </li>
             );
           })}
-              </ul>
-              <ModeToggle />
+
+          <ModeToggle />
+        </ul>
       </div>
     </nav>
   );
