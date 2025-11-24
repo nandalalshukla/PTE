@@ -30,7 +30,7 @@ const OurCoursesButton = () => {
       {/* Avatar */}
 
       <div className="relative size-10 md:size-12 rounded-full overflow-hidden bg-white/20 z-10 px-6 py-6">
-        <Image src="/tilt.png" alt="avatar img" fill sizes="40px" />{" "}
+        <Image src="/1pte.png" alt="avatar img" fill sizes="40px" />{" "}
       </div>
       {/* Text */}
       <div className="text-left z-10">
