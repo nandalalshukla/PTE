@@ -17,9 +17,11 @@ export default function DesktopNavbar() {
   return (
     <nav className="backdrop-blur-xl border-b border-white/20 shadow-lg fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-10 py-4">
-        <div className="text-2xl font-extrabold drop-shadow-lg">
+        <Link
+          href={"/"}
+          className="text-2xl font-extrabold drop-shadow-lg">
           PassTheExcellence
-        </div>
+        </Link>
 
         <ul className="flex items-center gap-10 text-lg font-medium">
           {links.map((link) => {

@@ -7,10 +7,13 @@ interface TiltedCardProps {
   imageSrc: React.ComponentProps<"img">["src"];
   altText?: string;
   captionText?: string;
-  containerHeight?: React.CSSProperties["height"];
-  containerWidth?: React.CSSProperties["width"];
-  imageHeight?: React.CSSProperties["height"];
-  imageWidth?: React.CSSProperties["width"];
+
+  // CHANGED: allow classNames instead of CSS height/width
+  containerHeight?: string;
+  containerWidth?: string;
+  imageHeight?: string;
+  imageWidth?: string;
+
   scaleOnHover?: number;
   rotateAmplitude?: number;
   showMobileWarning?: boolean;
@@ -29,10 +32,10 @@ export default function TiltedCard({
   imageSrc,
   altText = "Tilted card image",
   captionText = "",
-  containerHeight = "300px",
-  containerWidth = "100%",
-  imageHeight = "300px",
-  imageWidth = "300px",
+  containerHeight = "h-[220px]",
+  containerWidth = "w-[220px]",
+  imageHeight = "h-[200px]",
+  imageWidth = "w-[200px]",
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
   showMobileWarning = true,
@@ -92,11 +95,7 @@ export default function TiltedCard({
   return (
     <figure
       ref={ref}
-      className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
-      style={{
-        height: containerHeight,
-        width: containerWidth,
-      }}
+      className={`relative [perspective:800px] flex flex-col items-center justify-center ${containerHeight} ${containerWidth}`}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -108,10 +107,9 @@ export default function TiltedCard({
       )}
 
       <motion.div
-        className="relative [transform-style:preserve-3d] bg-gray-200 border-solid border-5 border-red-600  p-15 rounded-lg ml-0 md:ml-10 mt-10 md:mt-0"
+        className={`relative [transform-style:preserve-3d] bg-[linear-gradient(135deg,#e5d4ff,#c8a6ff,#9f7bff,#7fa5ff)]
+  dark:bg-[linear-gradient(135deg,#2a2256,#3F3E81,#635F9C)] border-[2px] p-4 rounded-lg ${imageHeight} ${imageWidth}`}
         style={{
-          width: imageWidth,
-          height: imageHeight,
           rotateX,
           rotateY,
           scale,
@@ -120,15 +118,11 @@ export default function TiltedCard({
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
-          style={{
-            width: imageWidth,
-            height: imageHeight,
-          }}
+          className="w-full h-full object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
         />
 
         {displayOverlayContent && overlayContent && (
-          <motion.div className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]">
+          <motion.div className="absolute text-white top-1 left-1 p-1 border-3 border-gray-600 rounded-[8px] bg-gradient-to-r from-[#5227FF] to-[#7440f8] shadow-[0_8px_32px_rgba(118,70,255,0.55)] dark:border-[#635F9C] z-[2] will-change-transform [transform:translateZ(30px)]">
             {overlayContent}
           </motion.div>
         )}
