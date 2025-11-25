@@ -36,18 +36,6 @@ const OurCoursesButton = () => {
           strokeLinecap="round"
         />
       </svg>
-
-      {/* Inline keyframes (Tailwind v4 supported) */}
-      <style jsx>{`
-        @keyframes shimmerMove {
-          0% {
-            left: -20%;
-          }
-          100% {
-            left: 120%;
-          }
-        }
-      `}</style>
     </Link>
   );
 };
