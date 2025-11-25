@@ -1,3 +1,5 @@
+"use client";
+
 import TiltedCard from "../components/ui/Body/Home/TiltedCard";
 import ContactNowButton from "@/components/ui/Body/Home/ContactNowButton";
 import OurCoursesButton from "@/components/ui/Body/Home/OurCoursesButton";
@@ -41,7 +43,7 @@ export default function Home() {
             part of Nepal&apos;s most interactive, effective and affordable
            
           </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center mt-4 px-8">
+          <div className="flex flex-col md:flex-row gap-10 justify-center items-center mt-4 px-8">
             <ContactNowButton />
             <OurCoursesButton />
           </div>
