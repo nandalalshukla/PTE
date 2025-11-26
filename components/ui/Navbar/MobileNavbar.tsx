@@ -27,18 +27,19 @@ export default function MobileNavbar() {
   }, [open]);
 
   const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
     { name: "Courses", href: "/courses" },
+    { name: "About Us", href: "/about" },
+    { name: "Instructors", href: "/instructors" },
+    { name: "Study", href: "/study" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
     <>
       <nav className="backdrop-blur-xl border-b border-white/20 fixed top-0 left-0 w-full z-50 shadow-lg px-5 py-4 flex items-center justify-between">
-        <div className="text-xl font-extrabold drop-shadow-lg">
+        <Link href={"/"} className="text-xl font-extrabold drop-shadow-lg">
           PassTheExcellence
-        </div>
+        </Link>
 
         <div className="flex items-center gap-6">
           <ModeToggle />
@@ -58,7 +59,7 @@ export default function MobileNavbar() {
       {/* Mobile Menu Drawer */}
       <div
         id="mobile-menu"
-        className={`fixed top-0 right-0 w-2/4 h-full backdrop-blur-2xl border-l border-white/20 shadow-xl z-50
+        className={`fixed top-0 right-0 w-3/4 h-full backdrop-blur-2xl border-l border-white/20 shadow-xl z-50
         transform transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
@@ -76,18 +77,21 @@ export default function MobileNavbar() {
             <FiX size={28} />
           </button>
         </div>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-between items-center">
           {/* Navigation Links */}
-          <ul className="flex flex-col gap-6 p-6 text-lg">
+          <ul className="flex flex-col justify-center items-center gap-6 p-6 text-lg">
             {links.map((link) => {
               const isActive = pathname === link.href;
 
               return (
-                <li key={link.href} className="group relative w-fit">
+                <li key={link.href} className="relative group">
                   <Link
                     href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-1"
+                    className={`transition-colors duration-300 ${
+                      isActive
+                        ? "text-[#5227FF] font-semibold"
+                        : "hover:text-[#5227FF]"
+                    }`}
                   >
                     {link.name}
                   </Link>
@@ -95,7 +99,7 @@ export default function MobileNavbar() {
                   {/* Pen underline animation */}
                   <span
                     className={`absolute left-0 -bottom-1 h-[3px] rounded-full
-                    bg-yellow-500 transition-all duration-500
+                    bg-[#5227FF] transition-all duration-500
                     ease-[cubic-bezier(0.22,1,0.36,1)]
                     ${isActive ? "w-full" : "w-0 group-hover:w-full"}
                   `}

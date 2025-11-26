@@ -33,15 +33,15 @@ export default function DesktopNavbar() {
                   href={link.href}
                   className={`transition-colors duration-300 ${
                     isActive
-                      ? "text-yellow-600 font-semibold"
-                      : "hover:text-yellow-600"
+                      ? "text-[#5227FF] font-semibold"
+                      : "hover:text-[#5227FF]"
                   }`}
                 >
                   {link.name}
                 </Link>
 
                 <span
-                  className={`absolute left-0 -bottom-1 h-[3px] bg-yellow-600 rounded-full
+                  className={`absolute left-0 -bottom-1 h-[3px] bg-[#5227FF] rounded-full
     transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
     ${isActive ? "w-full" : "w-0 group-hover:w-full"}
   `}
