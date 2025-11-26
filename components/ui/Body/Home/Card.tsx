@@ -67,8 +67,8 @@ const CardData = [
 
 export default function PASSCard() {
   return (
-    <div className="w-full flex flex-col justify-center p-6 bg-gray-100 dark:bg-gray-900 mt-18 rounded-2xl">
-      <h1 className="text-4xl font-extrabold mb-5 text-gray-900 dark:text-white p-3 text-center">
+    <div className="w-full flex flex-col bg-gray-100 dark:bg-gray-900 mt-18 rounded-2xl justify-center items-center ">
+      <h1 className="text-4xl font-extrabold mb-5 text-gray-900 dark:text-white p-9">
         Why Learn German❓
       </h1>
 

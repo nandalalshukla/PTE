@@ -16,10 +16,8 @@ export default function DesktopNavbar() {
 
   return (
     <nav className="backdrop-blur-xl border-b border-white/20 shadow-lg fixed top-0 left-0 w-full z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-10 py-4">
-        <Link
-          href={"/"}
-          className="text-2xl font-extrabold drop-shadow-lg">
+      <div className="w-full mx-auto flex items-center justify-between px-10 py-4">
+        <Link href={"/"} className="text-2xl font-extrabold drop-shadow-lg">
           PassTheExcellence
         </Link>
 
