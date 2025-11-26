@@ -2,14 +2,14 @@ import PASSCard from "@/components/ui/Body/Home/Card";
 import TiltedCard from "../components/ui/Body/Home/TiltedCard";
 import ContactNowButton from "@/components/ui/Body/Home/ContactNowButton";
 import OurCoursesButton from "@/components/ui/Body/Home/OurCoursesButton";
-
+import StatsSection from "@/components/ui/Body/Home/Stats";
 import "animate.css";
 
 export default function Home() {
   return (
-    <main className="flex w-full flex-col items-center px-4 md:px-24 py-6 md:py-24">
+    <main className="flex w-full flex-col items-center px-4 md:px-24 py-6 md:py-24 ">
       {/* FULL WIDTH WRAPPER */}
-      <div className="w-full max-w-[1400px]">
+      <div className="w-full max-w-[1400px] ">
         {/* TOP SECTION */}
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mt-10 w-full">
           {/* LEFT TEXT SECTION */}
@@ -74,7 +74,7 @@ export default function Home() {
             />
           </div>
         </div>
-
+        <StatsSection />
         {/* PASS CARD SECTION */}
         <div className="mt-14">
           <PASSCard />
