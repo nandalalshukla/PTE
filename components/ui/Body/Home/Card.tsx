@@ -76,7 +76,7 @@ export default function PASSCard() {
         {CardData.map((card, index) => (
           <div
             key={index}
-            className="flex items-center justify-between w-full p-6 rounded-xl bg-white dark:bg-gray-700 shadow-lg relative border-2 border-transparent hover:border-[#8A5CFF] hover:scale-100 transition-all duration-300 group hover:shadow-xl"
+            className="flex items-center justify-between w-full p-6 rounded-xl bg-white dark:bg-gray-800 border-3 border-gray-700 shadow-lg relative hover:bg-gray-900 hover:border-[#8A5CFF] transition-all duration-300 group"
           >
             {/* Left Area */}
             <div className="z-10 pr-4 w-[65%]">
@@ -110,18 +110,14 @@ export default function PASSCard() {
 
             {/* Curved Color Section */}
             <div className="absolute right-0 top-0 h-full w-1/3 pointer-events-none rounded-r-xl">
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.5 }}
+              <div
                 className="h-full w-full rounded-l-[80px] overflow-hidden rounded-r-xl"
                 style={{ backgroundColor: card.color }}
               >
                 <div className="w-full h-full flex items-center justify-center text-7xl group-hover:scale-145 transition-all duration-300">
                   {card.emoji}
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 //german language courses level data
 const CourseData = [
@@ -33,6 +34,16 @@ const CourseData = [
     ClassDuration: "2 hours/day, 6 days/week",
     price: "रु 8000",
     demoVdo: "https://youtu.be/UY4H0zujVpA?si=7c3WZcvAEeFltmzC",
+  },
+  {
+    imageSrc: "/courses/european-course.jpg",
+    title: "Perosnalized tutoring",
+    description:
+      "We also provide personalized tutoring tailored according to your time and need. These batches specially focused for students living abroad who want to learn german for their studies and work.",
+    COurseDuration: "According to need",
+    ClassDuration: "6 days/week",
+    price: "रु Depends on the number of studetns and timing",
+    demoVdo: "https://www.youtube.com/watch?v=k3cPtcP6Kq4",
   },
 ];
 
@@ -67,44 +78,43 @@ export default function CourseCards() {
   return (
     <>
       <section className="w-full py-12">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 mt-5">
           <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7e5cf3]">
+            <p className="text-xl font-semibold uppercase tracking-[0.2em] text-[#7e5cf3]">
               Courses & Pricing
             </p>
-            <h2 className="mt-2 text-3xl font-bold md:text-4xl">
-              Find the plan that fits your German journey
-            </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
             {CourseData.map((course, idx) => {
-              const isPopular = idx === 1;
+              const isPopular = idx === 0;
               return (
                 <article
                   key={course.title}
-                  className={`relative flex h-full flex-col rounded-3xl border bg-white/90 p-6 shadow-[0_25px_80px_rgba(82,39,255,0.08)] transition hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(82,39,255,0.15)] ${
-                    isPopular ? "border-[#7E5CF3]" : "border-[#E3E0FF]"
-                  }`}
+                  className="border-2 border-gray-300 p-7 rounded-2xl  dark:bg-gray-800 dark:hover:bg-gray-900 hover:scale-102 transition-transform duration-300 relative flex h-full flex-col"
                 >
                   {isPopular && (
-                    <span className="absolute -top-3 right-6 rounded-full border border-[#7E5CF3] bg-[#F4EEFF] px-3 py-1 text-xs font-semibold text-[#7E5CF3]">
-                      Most Popular
+                    <span className="absolute -top-3 right-6 rounded-full border border-[#7E5CF3] bg-[#F4EEFF] px-3 py-1 text-xs font-semibold text-[#6136ed]">
+                      Start Here
                     </span>
                   )}
 
-                  <div className="mb-4 text-sm font-medium text-[#7E5CF3]">
-                    {course.title}
+                  <div className="mb-4 flex items-center justify-center rounded-xl bg-white/5 p-4">
+                    <Image
+                      src={course.imageSrc}
+                      alt={course.title}
+                      width={160}
+                      height={120}
+                      className="h-28 w-auto object-cover rounded-lg"
+                    />
                   </div>
 
-                  <div className="text-3xl font-bold text-gray-900">
-                    {course.price}
-                  </div>
-                  <p className="mt-4 text-sm text-gray-600">
-                    {course.description}
-                  </p>
+                  <div className="mb-4 text-sm font-medium">{course.title}</div>
 
-                  <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm text-gray-700">
+                  <div className="text-3xl font-bold ">{course.price}</div>
+                  <p className="mt-4 text-sm">{course.description}</p>
+
+                  <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm ">
                     <li className="flex items-start gap-2">
                       <span className="text-[#7E5CF3]">✓</span>
                       Course duration: {course.COurseDuration}
@@ -126,18 +136,16 @@ export default function CourseCards() {
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <button
                       type="button"
-                      className={`rounded-xl px-4 py-3 text-sm font-semibold text-white transition ${
-                        isPopular
-                          ? "bg-[#7E5CF3] hover:bg-[#6a4cd1]"
-                          : "bg-[#A7A1FF] hover:bg-[#9088f0]"
-                      }`}
+                      className={
+                        "rounded-xl px-4 py-3 text-sm font-semibold text-white transition bg-[#7E5CF3] hover:bg-[#6a4cd1]"
+                      }
                     >
                       Choose plan
                     </button>
                     <button
                       type="button"
                       onClick={() => setActiveDemoUrl(course.demoVdo)}
-                      className="rounded-xl border border-[#d7d2ff] px-4 py-3 text-sm font-semibold text-[#6146d8] transition hover:border-[#7E5CF3] hover:text-[#492ac3]"
+                      className="rounded-xl border border-[#d7d2ff] px-4 py-3 text-sm font-semibold transition hover:border-[#7E5CF3]"
                     >
                       Watch demo
                     </button>
@@ -151,20 +159,24 @@ export default function CourseCards() {
 
       {embedUrl && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
+          onClick={() => setActiveDemoUrl(null)}
         >
-          <div className="relative w-full max-w-3xl rounded-3xl bg-white p-4 shadow-2xl">
+          <div
+            className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/15 bg-linear-to-br from-slate-950/95 via-slate-900 to-slate-900/95 p-6 shadow-[0_35px_120px_rgba(0,0,0,0.55)] text-white"
+            onClick={(event) => event.stopPropagation()}
+          >
             <button
               type="button"
               aria-label="Close video"
               onClick={() => setActiveDemoUrl(null)}
-              className="absolute right-4 top-4 rounded-full bg-black/5 p-2 text-gray-600 transition hover:bg-black/10"
+              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20"
             >
               ✕
             </button>
-            <div className="aspect-video w-full overflow-hidden rounded-2xl bg-black">
+            <div className="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
               <iframe
                 src={embedUrl}
                 title="Course demo video"
