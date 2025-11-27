@@ -67,8 +67,8 @@ const CardData = [
 
 export default function PASSCard() {
   return (
-    <div className="w-full flex flex-col bg-gray-100 dark:bg-gray-800 mt-9 rounded-2xl justify-center items-center p-10 ">
-      <h1 className="text-4xl font-extrabold mb-5 text-gray-900 dark:text-white p-4">
+    <div className="w-full flex flex-col bg-gray-100 dark:bg-gray-800 mt-9 rounded-2xl justify-center items-center p-5 ">
+      <h1 className="text-4xl font-extrabold mb-5 text-gray-900 dark:text-white p-4 text-center">
         Why Learn German❓
       </h1>
 
@@ -76,7 +76,7 @@ export default function PASSCard() {
         {CardData.map((card, index) => (
           <div
             key={index}
-            className="flex items-center justify-between w-full p-6 rounded-xl bg-white dark:bg-gray-700 shadow-lg relative border-2 border-transparent hover:border-[#8A5CFF] hover:scale-100 transition-all duration-300 group"
+            className="flex items-center justify-between w-full p-6 rounded-xl bg-white dark:bg-gray-700 shadow-lg relative border-2 border-transparent hover:border-[#8A5CFF] hover:scale-100 transition-all duration-300 group hover:shadow-xl"
           >
             {/* Left Area */}
             <div className="z-10 pr-4 w-[65%]">

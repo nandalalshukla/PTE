@@ -3,6 +3,8 @@ import TiltedCard from "../components/ui/Body/Home/TiltedCard";
 import ContactNowButton from "@/components/ui/Body/Home/ContactNowButton";
 import OurCoursesButton from "@/components/ui/Body/Home/OurCoursesButton";
 import StatsSection from "@/components/ui/Body/Home/Stats";
+import Community from "@/components/ui/Body/Home/Community";
+import CourseCards from "@/components/ui/Body/Home/Courses";
 import "animate.css";
 
 export default function Home() {
@@ -11,7 +13,7 @@ export default function Home() {
       {/* FULL WIDTH WRAPPER */}
       <div className="w-full max-w-[1400px] ">
         {/* TOP SECTION */}
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mt-10 w-full">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mt-15 lg:mt-10  w-full">
           {/* LEFT TEXT SECTION */}
           <div className="w-full md:w-1/2 text-center md:text-left px-2 md:px-0">
             {/* MAIN HEADING */}
@@ -57,10 +59,10 @@ export default function Home() {
               imageSrc="/tilt.png"
               altText="Learn German with Nandalal"
               captionText="⭐ Our Top Results"
-              containerHeight="h-[420px] sm:h-[360px] md:h-[800px] lg:h-[520px]"
-              containerWidth="w-[440px] sm:w-[340px] md:w-[800px] lg:w-[450px]"
-              imageHeight="h-[400px] sm:h-[340px] md:h-[800px] lg:h-[500px]"
-              imageWidth="w-[380px] sm:w-[320px] md:w-[800px] lg:w-[430px]"
+              containerHeight="h-[420px] sm:h-[360px] md:h-[430px] lg:h-[520px]"
+              containerWidth="w-[440px] sm:w-[340px] md:w-[360px] lg:w-[450px]"
+              imageHeight="h-[400px] sm:h-[340px] md:h-[410px] lg:h-[500px]"
+              imageWidth="w-[380px] sm:w-[320px] md:w-[340px] lg:w-[430px]"
               rotateAmplitude={10}
               scaleOnHover={1.05}
               showMobileWarning={false}
@@ -74,7 +76,12 @@ export default function Home() {
             />
           </div>
         </div>
+   
+          <CourseCards />
+
+        {/* STATS SECTION */}
         <StatsSection />
+        <Community />
         {/* PASS CARD SECTION */}
         <div className="mt-14">
           <PASSCard />

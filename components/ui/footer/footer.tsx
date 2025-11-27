@@ -8,44 +8,56 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import Link from "next/link";
 
-
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 dark:border-gray-800 bg-[#f8f8f8] dark:bg-[#0d0d0d] text-gray-700 dark:text-gray-300 pt-8 pb-8 md:px-5">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 place-items-center md:grid-cols-3 gap-6 md:gap-13">
-        <div>
-          <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Pass The Excellence
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 leading-relaxed w-[200px]">
-            The leading Online German Language institute in Nepal.
-          </p>
-
-          <div className="flex gap-4 mt-6">
-            <Link
+      <div className="max-w-7xl mx-auto grid grid-cols-1 justify-center items-center md:grid-cols-3 gap-6 md:gap-13">
+        <div className="flex flex-col justify-center items-center ">
+          <div>
+            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">
+              Pass The Excellence
+            </h2>
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed w-[200px]">
+              The leading Online German Language institute in Nepal.
+            </p>
+          </div>
+          <div className="flex gap-3 mt-3">
+            <a
               href="#"
               className="w-10 h-10  text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
             >
               <FaFacebook />
-            </Link>
-            <Link
+            </a>
+            <a
               href="#"
               className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
             >
               <FaInstagramSquare />
-            </Link>
-            <Link
+            </a>
+            <a
+              href="#"
+              className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
+            >
+              <FaInstagramSquare />
+            </a>
+            <a
               href="#"
               className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
             >
               <FaYoutube />
-            </Link>
-            <Link
+            </a>
+            <a
               href="#"
               className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
             >
               <AiFillTikTok />
-            </Link>
+            </a>
+            <a
+              href="#"
+              className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
+            >
+              <AiFillTikTok />
+            </a>
           </div>
         </div>
 

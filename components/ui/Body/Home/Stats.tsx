@@ -51,7 +51,7 @@ const StatBox = ({ value, label, subLabel, bgColor, imgSrc }: StatBoxProps) => {
       style={{ backgroundColor: bgColor }}
       initial={{ opacity: 0, translateY: "50px" }}
       whileInView={{ opacity: 1, translateY: "0px" }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
     >
       {/* Count Number */}
       <h2 className="text-4xl font-extrabold text-gray-800">{count}+</h2>
@@ -69,7 +69,7 @@ const StatBox = ({ value, label, subLabel, bgColor, imgSrc }: StatBoxProps) => {
 /* MAIN STATS SECTION */
 export default function StatsSection() {
   return (
-    <section className="w-full flex flex-col justify-center items-center py-8 px-4 border-2 rounded-2xl border-gray-200 bg-gray-200 dark:bg-gray-800 mt-12 ">
+    <section className="w-full flex flex-col justify-center items-center py-8 px-4 border-2 rounded-2xl bg-gray-100 dark:bg-gray-800 mt-12 ">
       <h1 className="text-3xl md:text-4xl font-extrabold text-center">
         A Platform Trusted by Students
       </h1>
