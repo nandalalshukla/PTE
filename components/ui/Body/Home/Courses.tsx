@@ -6,7 +6,7 @@ import Image from "next/image";
 //german language courses level data
 const CourseData = [
   {
-    imageSrc: "/courses/a1-course.jpg",
+    imageSrc: "/1pte.png",
     title: "A1 Blended Intensive Course",
     description:
       "Begin your German learning journey with our A1 Blended Intensive Course, designed for absolute beginners. This course combines online and in-person learning to provide a comprehensive introduction to the German language, covering basic vocabulary, grammar, and conversational skills.",
@@ -16,7 +16,7 @@ const CourseData = [
     demoVdo: "https://youtu.be/l0JC0Agyh3c?si=zTU4tkHaMeKXcMRf",
   },
   {
-    imageSrc: "/courses/a2-course.jpg",
+    imageSrc: "/2pte.png",
     title: "A2 Blended Intensive Course",
     description:
       "Continue your German language journey with our A2 Blended Intensive Course, perfect for those who have completed the A1 level. This course focuses on expanding your vocabulary, improving grammar skills, and enhancing conversational abilities through a mix of online and in-person sessions.",
@@ -26,7 +26,7 @@ const CourseData = [
     demoVdo: "https://youtu.be/Hf0O1mGKFZg?si=99MXWbLT1zrs_Lli",
   },
   {
-    imageSrc: "/courses/b1-course.jpg",
+    imageSrc: "/3pte.png",
     title: "B1 Blended Intensive Course",
     description:
       "Advance your German skills with our B1 Blended Intensive Course, designed for intermediate learners. This course emphasizes practical communication, complex grammar structures, and cultural understanding through a combination of online and face-to-face learning.",
@@ -34,16 +34,6 @@ const CourseData = [
     ClassDuration: "2 hours/day, 6 days/week",
     price: "रु 8000",
     demoVdo: "https://youtu.be/UY4H0zujVpA?si=7c3WZcvAEeFltmzC",
-  },
-  {
-    imageSrc: "/courses/european-course.jpg",
-    title: "Perosnalized tutoring",
-    description:
-      "We also provide personalized tutoring tailored according to your time and need. These batches specially focused for students living abroad who want to learn german for their studies and work.",
-    COurseDuration: "According to need",
-    ClassDuration: "6 days/week",
-    price: "रु Depends on the number of studetns and timing",
-    demoVdo: "https://www.youtube.com/watch?v=k3cPtcP6Kq4",
   },
 ];
 
@@ -85,13 +75,13 @@ export default function CourseCards() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
             {CourseData.map((course, idx) => {
               const isPopular = idx === 0;
               return (
                 <article
                   key={course.title}
-                  className="border-2 border-gray-300 p-7 rounded-2xl  dark:bg-gray-800 dark:hover:bg-gray-900 hover:scale-102 transition-transform duration-300 relative flex h-full flex-col"
+                  className="border-1 hover:border-[#7E5CF3] p-7 rounded-2xl  dark:bg-gray-800 dark:hover:bg-gray-900 transition-transform duration-300 relative flex h-full flex-col group"
                 >
                   {isPopular && (
                     <span className="absolute -top-3 right-6 rounded-full border border-[#7E5CF3] bg-[#F4EEFF] px-3 py-1 text-xs font-semibold text-[#6136ed]">
@@ -99,13 +89,13 @@ export default function CourseCards() {
                     </span>
                   )}
 
-                  <div className="mb-4 flex items-center justify-center rounded-xl bg-white/5 p-4">
+                  <div className="flex items-center justify-center rounded-xl border-1 border-[#7E5CF3] dark:bg-gray-900">
                     <Image
                       src={course.imageSrc}
                       alt={course.title}
-                      width={160}
-                      height={120}
-                      className="h-28 w-auto object-cover rounded-lg"
+                      width={170}
+                      height={130}
+                      className="h-full w-full object-cover rounded-lg group:hover:scale-105 transition-transform duration-200"
                     />
                   </div>
 

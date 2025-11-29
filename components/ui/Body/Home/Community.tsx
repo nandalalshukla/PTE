@@ -9,7 +9,7 @@ export default function Community() {
       dark:bg-gray-800
       rounded-2xl items-center p-4 animate__animated animate__fadeInUp"
     >
-      <div className="relative bg-gray-300 rounded-2xl overflow-hidden dark:bg-gray-600 md:w-3/5 lg:w-3/5 w-full flex justify-center items-center">
+      <div className="relative bg-gray-800 rounded-2xl overflow-hidden dark:bg-gray-800 md:w-3/5 lg:w-3/5 w-full flex justify-center items-center">
         <Image
           src={commuImg}
           alt="Community"
