@@ -81,7 +81,7 @@ export default function CourseCards() {
               return (
                 <article
                   key={course.title}
-                  className="border-1 hover:border-[#7E5CF3] p-7 rounded-2xl  dark:bg-gray-800 dark:hover:bg-gray-900 transition-transform duration-300 relative flex h-full flex-col group"
+                  className="border-1 border-gray-700 hover:border-[#7E5CF3] p-7 rounded-2xl dark:bg-gray-900 transition-transform duration-300 relative flex h-full flex-col group"
                 >
                   {isPopular && (
                     <span className="absolute -top-3 right-6 rounded-full border border-[#7E5CF3] bg-[#F4EEFF] px-3 py-1 text-xs font-semibold text-[#6136ed]">
@@ -89,19 +89,20 @@ export default function CourseCards() {
                     </span>
                   )}
 
-                  <div className="flex items-center justify-center rounded-xl border-1 border-[#7E5CF3] dark:bg-gray-900">
+                  <div className="mx-auto mb-4 flex h-48 w-full max-w-[220px] items-center justify-center overflow-hidden">
                     <Image
                       src={course.imageSrc}
                       alt={course.title}
-                      width={170}
-                      height={130}
-                      className="h-full w-full object-cover rounded-lg group:hover:scale-105 transition-transform duration-200"
+                      width={220}
+                      height={220}
+                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-110"
                     />
                   </div>
 
-                  <div className="mb-4 text-sm font-medium">{course.title}</div>
+                  <p className="mt-3 text-xl font-medium">{course.title}</p>
 
-                  <div className="text-3xl font-bold ">{course.price}</div>
+                  <p className="text-3xl py-2">{course.price}</p>
+                  <hr className="my-2 border-t border-gray-700" />
                   <p className="mt-4 text-sm">{course.description}</p>
 
                   <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm ">
