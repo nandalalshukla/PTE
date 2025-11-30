@@ -1,10 +1,10 @@
 "use client";
-import { IoCall } from "react-icons/io5";
+
 import { useState } from "react";
 import Image from "next/image";
-import { Link } from "lucide-react";
+
 import OurCoursesButton from "./OurCoursesButton";
-import ContactNowButton from "./ContactNowButton";
+
 
 //german language courses level data
 const CourseData = [
@@ -216,7 +216,7 @@ export default function CourseCards() {
             onClick={() => setActiveDemoUrl(null)}
             aria-label="Close video"
             className="
-        fixed top-4 right-4 z-[60]
+        fixed top-4 right-4 z-60
         h-10 w-10 flex items-center justify-center
         rounded-full
         bg-white/40 dark:bg-gray-800/60
