@@ -1,6 +1,7 @@
 import TiltedCard from "./TiltedCard";
 import ContactNowButton from "@/components/ui/Body/Home/ContactNowButton";
 import OurCoursesButton from "@/components/ui/Body/Home/OurCoursesButton";
+import { IoCall } from "react-icons/io5";
 
 function Landing() {
   return (
@@ -39,8 +40,16 @@ function Landing() {
 
         {/* BUTTONS */}
         <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start items-center mt-6 animate__animated animate__fadeInLeft">
-          <ContactNowButton />
-          <OurCoursesButton />
+          <ContactNowButton
+            text="Contact Now"
+            icon={<IoCall />}
+            href="/contact"
+          />
+          <OurCoursesButton
+            text="Our Courses"
+            imgSrc="/1pte.jpg"
+            href="/courses"
+          />
         </div>
       </div>
 

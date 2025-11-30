@@ -76,7 +76,7 @@ export default function PASSCard() {
         {CardData.map((card, index) => (
           <div
             key={index}
-            className="flex items-center justify-between w-full p-6 rounded-xl bg-white dark:bg-gray-800 border-3 border-gray-900 dark:shadow-lg dark:shadow-gray-600 relative dark:hover:bg-gray-900 hover:border-[#8A5CFF] transition-all duration-300 group"
+            className="flex items-center justify-between w-full p-6 rounded-xl bg-white dark:bg-gray-800 border-3 border-gray-900 dark:shadow-lg dark:hover:shadow-gray-600 relative dark:hover:bg-gray-900 hover:border-[#8A5CFF] transition-all duration-300 group"
           >
             {/* Left Area */}
             <div className="z-10 pr-4 w-[65%]">

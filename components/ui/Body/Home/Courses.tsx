@@ -1,7 +1,10 @@
 "use client";
-
+import { IoCall } from "react-icons/io5";
 import { useState } from "react";
 import Image from "next/image";
+import { Link } from "lucide-react";
+import OurCoursesButton from "./OurCoursesButton";
+import ContactNowButton from "./ContactNowButton";
 
 //german language courses level data
 const CourseData = [
@@ -189,6 +192,14 @@ export default function CourseCards() {
                 </article>
               );
             })}
+          </div>
+          <div className="flex flex-row justify-center items-center">
+            <OurCoursesButton
+              text="Know More About Our Courses"
+              imgSrc="/1pte.jpg"
+              href="/courses"
+            />
+
           </div>
         </div>
       </section>

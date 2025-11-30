@@ -37,7 +37,10 @@ export default function MobileNavbar() {
   return (
     <>
       <nav className="backdrop-blur-xl border-b border-white/20 fixed top-0 left-0 w-full z-50 shadow-lg px-5 py-4 flex items-center justify-between">
-        <Link href={"/"} className="text-xl font-extrabold drop-shadow-lg">
+        <Link
+          href={"/"}
+          className="text-xl font-extrabold drop-shadow-lg font-inter"
+        >
           PassTheExcellence
         </Link>
 
