@@ -56,7 +56,13 @@
 .hover\:animate-wave:hover {
   animation: wave 1.6s ease-in-out;
 }
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

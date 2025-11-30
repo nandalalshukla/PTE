@@ -6,6 +6,9 @@ import { AiFillTikTok } from "react-icons/ai";
 import { IoIosMail } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import { AiFillGoogleCircle } from "react-icons/ai";
+import { FaLinkedin } from "react-icons/fa";
+
 import Link from "next/link";
 
 export default function Footer() {
@@ -38,7 +41,7 @@ export default function Footer() {
               href="#"
               className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
             >
-              <FaInstagramSquare />
+              <FaLinkedin />
             </a>
             <a
               href="#"
@@ -56,7 +59,7 @@ export default function Footer() {
               href="#"
               className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
             >
-              <AiFillTikTok />
+              <AiFillGoogleCircle />
             </a>
           </div>
         </div>

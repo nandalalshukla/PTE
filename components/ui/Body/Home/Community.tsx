@@ -6,7 +6,7 @@ export default function Community() {
     <div
       className="flex flex-col md:flex-row lg:flex-row w-full
       bg-gray-100 mt-10
-      dark:bg-gray-800
+      dark:bg-gray-900
       rounded-2xl items-center p-4 animate__animated animate__fadeInUp"
     >
       <div className="relative bg-gray-800 rounded-2xl overflow-hidden dark:bg-gray-800 md:w-3/5 lg:w-3/5 w-full flex justify-center items-center">

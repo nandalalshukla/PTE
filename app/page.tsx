@@ -3,6 +3,7 @@ import Landing from "@/components/ui/Body/Home/Landing";
 import StatsSection from "@/components/ui/Body/Home/Stats";
 import Community from "@/components/ui/Body/Home/Community";
 import CourseCards from "@/components/ui/Body/Home/Courses";
+import SwiperPass from "@/components/ui/Body/Home/swiper";
 import "animate.css";
 
 export default function Home() {
@@ -16,7 +17,9 @@ export default function Home() {
         <StatsSection />
         <Community />
         {/* PASS CARD SECTION */}
+        <SwiperPass />
         <div className="mt-14">
+
           <PASSCard />
         </div>
       </div>

@@ -67,45 +67,80 @@ export default function CourseCards() {
 
   return (
     <>
-      <section className="w-full py-12">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 mt-5">
+      <section className="w-full py-16">
+        <div className="mx-auto w-full max-w-6xl flex flex-col gap-10 px-4 mt-5">
+          {/* Header */}
           <div className="text-center">
             <p className="text-xl font-semibold uppercase tracking-[0.2em] text-[#7e5cf3]">
               Courses & Pricing
             </p>
           </div>
 
-          <div className="grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
+          {/* Cards Grid */}
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
             {CourseData.map((course, idx) => {
               const isPopular = idx === 0;
+
               return (
                 <article
                   key={course.title}
-                  className="border-1 border-gray-700 hover:border-[#7E5CF3] p-7 rounded-2xl dark:bg-gray-900 transition-transform duration-300 relative flex h-full flex-col group"
+                  className="
+                    group relative flex h-full flex-col
+                    rounded-2xl p-7 border transition-all duration-300 
+                    bg-gray-100 dark:bg-gray-900/80
+                    border-gray-400 dark:border-gray-700
+                    hover:shadow-xl hover:border-[#7E5CF3]
+                    backdrop-blur-sm
+                  "
                 >
+                  {/* Badge */}
                   {isPopular && (
-                    <span className="absolute -top-3 right-6 rounded-full border border-[#7E5CF3] bg-[#F4EEFF] px-3 py-1 text-xs font-semibold text-[#6136ed]">
+                    <span
+                      className="
+                      absolute -top-3 right-6 px-3 py-1 text-xs font-semibold
+                      rounded-full border bg-[#f5f0ff] text-[#6136ed]
+                      border-[#7E5CF3]
+                      dark:bg-[#2b2250] dark:text-[#d7c8ff]
+                    "
+                    >
                       Start Here
                     </span>
                   )}
 
+                  {/* Image */}
                   <div className="mx-auto mb-4 flex h-48 w-full max-w-[220px] items-center justify-center overflow-hidden">
                     <Image
                       src={course.imageSrc}
                       alt={course.title}
                       width={220}
                       height={220}
-                      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-110"
+                      className="
+                        h-full w-full object-contain 
+                        transition-transform duration-300 
+                        group-hover:scale-110
+                      "
                     />
                   </div>
 
-                  <p className="mt-3 text-xl font-medium">{course.title}</p>
+                  {/* Title */}
+                  <p className="mt-3 text-lg font-semibold dark:text-gray-100">
+                    {course.title}
+                  </p>
 
-                  <p className="text-3xl py-2">{course.price}</p>
-                  <hr className="my-2 border-t border-gray-700" />
-                  <p className="mt-4 text-sm">{course.description}</p>
+                  {/* Price */}
+                  <p className="text-3xl py-2 text-gray-900 dark:text-gray-200">
+                    {course.price}
+                  </p>
 
-                  <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm ">
+                  <hr className="my-3 border-gray-500 dark:border-gray-700" />
+
+                  {/* Description */}
+                  <p className="mt-2 text-sm text-gray-800 dark:text-gray-200">
+                    {course.description}
+                  </p>
+
+                  {/* Features */}
+                  <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm  text-gray-800  dark:text-gray-200">
                     <li className="flex items-start gap-2">
                       <span className="text-[#7E5CF3]">✓</span>
                       Course duration: {course.COurseDuration}
@@ -124,21 +159,31 @@ export default function CourseCards() {
                     </li>
                   </ul>
 
+                  {/* Buttons */}
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <button
                       type="button"
-                      className={
-                        "rounded-xl px-4 py-3 text-sm font-semibold text-white transition bg-[#7E5CF3] hover:bg-[#6a4cd1]"
-                      }
+                      className="
+                        rounded-xl px-4 py-3 text-sm font-semibold text-white
+                        bg-[#7E5CF3] hover:bg-[#6a4cd1]
+                        shadow-sm hover:shadow-md transition
+                      "
                     >
-                      Choose plan
+                      Choose Plan
                     </button>
+
                     <button
                       type="button"
                       onClick={() => setActiveDemoUrl(course.demoVdo)}
-                      className="rounded-xl border border-[#d7d2ff] px-4 py-3 text-sm font-semibold transition hover:border-[#7E5CF3]"
+                      className="
+                        rounded-xl px-4 py-3 text-sm font-semibold
+                        border border-gray-300 dark:border-gray-600
+                        text-gray-800 dark:text-gray-200
+                        hover:border-[#7E5CF3] hover:text-[#7E5CF3]
+                        transition
+                      "
                     >
-                      Watch demo
+                      Watch Demo
                     </button>
                   </div>
                 </article>
@@ -148,32 +193,50 @@ export default function CourseCards() {
         </div>
       </section>
 
+      {/* Modal */}
       {embedUrl && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
           role="dialog"
           aria-modal="true"
           onClick={() => setActiveDemoUrl(null)}
         >
-          <div
-            className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-white/15 bg-linear-to-br from-slate-950/95 via-slate-900 to-slate-900/95 p-6 shadow-[0_35px_120px_rgba(0,0,0,0.55)] text-white"
-            onClick={(event) => event.stopPropagation()}
+          {/* Fixed Close Button */}
+          <button
+            onClick={() => setActiveDemoUrl(null)}
+            aria-label="Close video"
+            className="
+        fixed top-4 right-4 z-[60]
+        h-10 w-10 flex items-center justify-center
+        rounded-full
+        bg-white/40 dark:bg-gray-800/60
+        text-black dark:text-white
+        text-2xl font-semibold leading-none
+        shadow-lg backdrop-blur
+        hover:bg-white/60 dark:hover:bg-gray-700
+        transition
+      "
           >
-            <button
-              type="button"
-              aria-label="Close video"
-              onClick={() => setActiveDemoUrl(null)}
-              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20"
-            >
-              ✕
-            </button>
-            <div className="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
+            ✕
+          </button>
+
+          {/* Modal Box */}
+          <div
+            className="
+        w-full max-w-4xl p-2 rounded-3xl
+        border border-white/10
+        bg-white dark:bg-gray-900
+        shadow-[0_35px_120px_rgba(0,0,0,0.55)]
+      "
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="aspect-video w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
               <iframe
                 src={embedUrl}
                 title="Course demo video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="h-full w-full"
+                className="w-full h-full rounded-xl"
               />
             </div>
           </div>
