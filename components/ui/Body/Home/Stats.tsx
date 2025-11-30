@@ -51,7 +51,7 @@ const StatBox = ({ value, label, subLabel, bgColor, imgSrc }: StatBoxProps) => {
       style={{ backgroundColor: bgColor }}
       initial={{ opacity: 0, translateY: "50px" }}
       whileInView={{ opacity: 1, translateY: "0px" }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
     >
       {/* Count Number */}
       <h2 className="text-4xl font-extrabold text-gray-800">{count}+</h2>

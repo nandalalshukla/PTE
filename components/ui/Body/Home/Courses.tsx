@@ -120,7 +120,7 @@ export default function CourseCards() {
                       className="
                         h-full w-full object-contain 
                         transition-transform duration-300 
-                        group-hover:scale-110
+                        group-hover:scale-105
                       "
                     />
                   </div>
@@ -196,7 +196,7 @@ export default function CourseCards() {
           <div className="flex flex-row justify-center items-center">
             <OurCoursesButton
               text="Know More About Our Courses"
-              imgSrc="/1pte.jpg"
+              imgSrc="/1pte.png"
               href="/courses"
             />
 
