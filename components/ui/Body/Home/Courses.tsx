@@ -196,10 +196,9 @@ export default function CourseCards() {
           <div className="flex flex-row justify-center items-center">
             <OurCoursesButton
               text="Know More About Our Courses"
-              imgSrc="/1pte.png"
+              imgSrc="/a1.jpg"
               href="/courses"
             />
-
           </div>
         </div>
       </section>

@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaFacebook } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
+import { RiWhatsappFill } from "react-icons/ri";
 import { AiFillTikTok } from "react-icons/ai";
 import { usePathname } from "next/navigation";
 import ModeToggle from "../ToggleTheme";
@@ -120,30 +120,30 @@ export default function MobileNavbar() {
             </p>
 
             <div className="flex gap-4 mt-6">
-              <Link
+              <a
                 href="#"
                 className="w-10 h-10  text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
               >
                 <FaFacebook />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#"
                 className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
               >
-                <FaInstagramSquare />
-              </Link>
-              <Link
+                <RiWhatsappFill />
+              </a>
+              <a
                 href="#"
                 className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
               >
                 <FaYoutube />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#"
                 className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
               >
                 <AiFillTikTok />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

@@ -47,8 +47,8 @@ function Landing() {
           />
           <OurCoursesButton
             text="Our Courses"
-            imgSrc="/1pte.png"
-            href="/courses"
+            imgSrc="/a1.jpg"
+            href="/course"
           />
         </div>
       </div>

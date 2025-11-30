@@ -24,8 +24,8 @@ const OurCoursesButton: React.FC<OurCoursesButtonProps> = ({
       <div className="h-[170%] w-20 bg-linear-to-r from-white/5 via-white/40 to-white/5 absolute blur-lg -rotate-135 -left-20 animate-[shimmerMove_1.6s_linear_infinite]" />
 
       {/* Avatar */}
-      <div className="relative size-10 md:size-12 rounded-full overflow-hidden bg-white/20 z-10 px-6 py-6">
-        <Image src={imgSrc} alt={text} fill sizes="40px" />
+      <div className="relative size-10 md:size-12 rounded-full overflow-hidden bg-white/20 z-10 p-3">
+        <Image src={imgSrc} alt={text} fill sizes="30px" />
       </div>
 
       {/* Text */}
