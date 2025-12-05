@@ -1,45 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-
 import OurCoursesButton from "./OurCoursesButton";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiCheck, FiPlay, FiX } from "react-icons/fi";
+import { cn } from "@/lib/utils";
 
-
-//german language courses level data
+// German language courses level data
 const CourseData = [
   {
     imageSrc: "/1pte.png",
     title: "A1 Blended Intensive Course",
     description:
-      "Begin your German learning journey with our A1 Blended Intensive Course, designed for absolute beginners. This course combines online and in-person learning to provide a comprehensive introduction to the German language, covering basic vocabulary, grammar, and conversational skills.",
+      "Begin your German learning journey with our A1 Blended Intensive Course, designed for absolute beginners. This course combines online and in-person learning to provide a comprehensive introduction to the German language.",
     COurseDuration: "4 weeks",
     ClassDuration: "1 hours/day, 6 days/week",
     price: "रु 4000",
     demoVdo: "https://youtu.be/l0JC0Agyh3c?si=zTU4tkHaMeKXcMRf",
+    popular: true,
   },
   {
     imageSrc: "/2pte.png",
     title: "A2 Blended Intensive Course",
     description:
-      "Continue your German language journey with our A2 Blended Intensive Course, perfect for those who have completed the A1 level. This course focuses on expanding your vocabulary, improving grammar skills, and enhancing conversational abilities through a mix of online and in-person sessions.",
+      "Continue your German language journey with our A2 Blended Intensive Course, perfect for those who have completed the A1 level. This course focuses on expanding your vocabulary and improving grammar skills.",
     COurseDuration: "4 weeks",
     ClassDuration: "2 hours/day, 6 days/week",
     price: "रु 6000",
     demoVdo: "https://youtu.be/Hf0O1mGKFZg?si=99MXWbLT1zrs_Lli",
+    popular: false,
   },
   {
     imageSrc: "/3pte.png",
     title: "B1 Blended Intensive Course",
     description:
-      "Advance your German skills with our B1 Blended Intensive Course, designed for intermediate learners. This course emphasizes practical communication, complex grammar structures, and cultural understanding through a combination of online and face-to-face learning.",
+      "Advance your German skills with our B1 Blended Intensive Course, designed for intermediate learners. This course emphasizes practical communication, complex grammar structures, and cultural understanding.",
     COurseDuration: "8 weeks",
     ClassDuration: "2 hours/day, 6 days/week",
     price: "रु 8000",
     demoVdo: "https://youtu.be/UY4H0zujVpA?si=7c3WZcvAEeFltmzC",
+    popular: false,
   },
 ];
 
+// Extract YouTube embed URL
 const buildYouTubeEmbedUrl = (url: string) => {
   try {
     const parsed = new URL(url);
@@ -58,7 +63,9 @@ const buildYouTubeEmbedUrl = (url: string) => {
       }
     }
 
-    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+    return videoId
+      ? `https://www.youtube.com/embed/${videoId}?autoplay=1`
+      : url;
   } catch {
     return url;
   }
@@ -68,134 +75,161 @@ export default function CourseCards() {
   const [activeDemoUrl, setActiveDemoUrl] = useState<string | null>(null);
   const embedUrl = activeDemoUrl ? buildYouTubeEmbedUrl(activeDemoUrl) : null;
 
+  // Lock Body Scroll When Modal Opens
+  useEffect(() => {
+    if (activeDemoUrl) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+  }, [activeDemoUrl]);
+
+  // ESC to close modal
+  useEffect(() => {
+    const close = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveDemoUrl(null);
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
+
   return (
     <>
-      <section className="w-full py-16">
-        <div className="mx-auto w-full max-w-6xl flex flex-col gap-10 px-4 mt-5">
+      <section className="w-full py-20 px-4 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+          <div className="absolute top-1/4 -left-64 w-96 h-96 bg-[#5227FF]/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="mx-auto w-full max-w-7xl flex flex-col gap-12">
           {/* Header */}
-          <div className="text-center">
-            <p className="text-xl font-semibold uppercase tracking-[0.2em] text-[#7e5cf3]">
-              Courses & Pricing
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
+              Our Courses
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Choose Your <span className="text-gradient">Learning Path</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Comprehensive German language courses designed to take you from
+              beginner to advanced levels with expert guidance.
             </p>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
-            {CourseData.map((course, idx) => {
-              const isPopular = idx === 0;
-
-              return (
-                <article
-                  key={course.title}
-                  className="
-                    group relative flex h-full flex-col
-                    rounded-2xl p-7 border transition-all duration-300 
-                    bg-gray-100 dark:bg-gray-900/80
-                    border-gray-400 dark:border-gray-700
-                    hover:shadow-xl hover:border-[#7E5CF3]
-                    backdrop-blur-sm
-                  "
-                >
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {CourseData.map((course, idx) => (
+              <motion.article
+                key={course.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className={cn(
+                  "group relative flex flex-col h-full rounded-3xl p-1",
+                  course.popular
+                    ? "bg-gradient-to-b from-[#5227FF] to-purple-600"
+                    : "bg-gray-200 dark:bg-gray-800"
+                )}
+              >
+                <div className="flex flex-col h-full w-full rounded-[22px] bg-white dark:bg-gray-900 p-6 relative overflow-hidden">
                   {/* Badge */}
-                  {isPopular && (
-                    <span
-                      className="
-                      absolute -top-3 right-6 px-3 py-1 text-xs font-semibold
-                      rounded-full border bg-[#f5f0ff] text-[#6136ed]
-                      border-[#7E5CF3]
-                      dark:bg-[#2b2250] dark:text-[#d7c8ff]
-                    "
-                    >
-                      Start Here
-                    </span>
+                  {course.popular && (
+                    <div className="absolute top-0 right-0 bg-[#5227FF] text-white text-xs font-bold px-3 py-1 rounded-bl-xl">
+                      MOST POPULAR
+                    </div>
                   )}
 
                   {/* Image */}
-                  <div className="mx-auto mb-4 flex h-48 w-full max-w-[220px] items-center justify-center overflow-hidden">
+                  <div className="mx-auto mb-6 relative w-full h-48 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 dark:to-black/10 rounded-xl" />
                     <Image
                       src={course.imageSrc}
                       alt={course.title}
                       width={220}
                       height={220}
-                      className="
-                        h-full w-full object-contain 
-                        transition-transform duration-300 
-                        group-hover:scale-105
-                      "
+                      className="object-contain h-full w-auto drop-shadow-xl transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
 
-                  {/* Title */}
-                  <p className="mt-3 text-lg font-semibold dark:text-gray-100">
-                    {course.title}
-                  </p>
+                  {/* Content */}
+                  <div className="flex-1 flex flex-col">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {course.title}
+                    </h3>
 
-                  {/* Price */}
-                  <p className="text-3xl py-2 text-gray-900 dark:text-gray-200">
-                    {course.price}
-                  </p>
+                    <div className="flex items-baseline gap-1 mb-4">
+                      <span className="text-3xl font-bold text-[#5227FF]">
+                        {course.price}
+                      </span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        / course
+                      </span>
+                    </div>
 
-                  <hr className="my-3 border-gray-500 dark:border-gray-700" />
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-6 line-clamp-3">
+                      {course.description}
+                    </p>
 
-                  {/* Description */}
-                  <p className="mt-2 text-sm text-gray-800 dark:text-gray-200">
-                    {course.description}
-                  </p>
+                    <div className="space-y-3 mb-8 flex-1">
+                      <div className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                        <div className="w-6 h-6 rounded-full bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF]">
+                          <FiCheck size={14} />
+                        </div>
+                        <span>Duration: {course.COurseDuration}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                        <div className="w-6 h-6 rounded-full bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF]">
+                          <FiCheck size={14} />
+                        </div>
+                        <span>{course.ClassDuration}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300">
+                        <div className="w-6 h-6 rounded-full bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF]">
+                          <FiCheck size={14} />
+                        </div>
+                        <span>Blended Learning</span>
+                      </div>
+                    </div>
 
-                  {/* Features */}
-                  <ul className="mt-6 flex flex-1 flex-col gap-3 text-sm  text-gray-800  dark:text-gray-200">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#7E5CF3]">✓</span>
-                      Course duration: {course.COurseDuration}
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#7E5CF3]">✓</span>
-                      Class schedule: {course.ClassDuration}
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#7E5CF3]">✓</span>
-                      Blended online + in-person sessions
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#7E5CF3]">✓</span>
-                      Dedicated mentor support
-                    </li>
-                  </ul>
+                    {/* Buttons */}
+                    <div className="grid grid-cols-2 gap-3 mt-auto">
+                      <button
+                        type="button"
+                        className={cn(
+                          "rounded-xl px-4 py-3 text-sm font-semibold text-white",
+                          "bg-[#5227FF] hover:bg-[#4018dd]",
+                          "shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40",
+                          "transition-all active:scale-95"
+                        )}
+                      >
+                        Enroll Now
+                      </button>
 
-                  {/* Buttons */}
-                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                    <button
-                      type="button"
-                      className="
-                        rounded-xl px-4 py-3 text-sm font-semibold text-white
-                        bg-[#7E5CF3] hover:bg-[#6a4cd1]
-                        shadow-sm hover:shadow-md transition
-                      "
-                    >
-                      Choose Plan
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => setActiveDemoUrl(course.demoVdo)}
-                      className="
-                        rounded-xl px-4 py-3 text-sm font-semibold
-                        border border-gray-300 dark:border-gray-600
-                        text-gray-800 dark:text-gray-200
-                        hover:border-[#7E5CF3] hover:text-[#7E5CF3]
-                        transition
-                      "
-                    >
-                      Watch Demo
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => setActiveDemoUrl(course.demoVdo)}
+                        className={cn(
+                          "flex items-center justify-center gap-2",
+                          "rounded-xl px-4 py-3 text-sm font-semibold",
+                          "border border-gray-200 dark:border-gray-700",
+                          "text-gray-700 dark:text-gray-200",
+                          "hover:border-[#5227FF] hover:text-[#5227FF]",
+                          "hover:bg-[#5227FF]/5",
+                          "transition-all active:scale-95"
+                        )}
+                      >
+                        <FiPlay size={16} /> Demo
+                      </button>
+                    </div>
                   </div>
-                </article>
-              );
-            })}
+                </div>
+              </motion.article>
+            ))}
           </div>
-          <div className="flex flex-row justify-center items-center">
+
+          {/* Bottom Button */}
+          <div className="flex justify-center mt-8">
             <OurCoursesButton
-              text="Know More About Our Courses"
+              text="View All Courses"
               imgSrc="/a1.jpg"
               href="/courses"
             />
@@ -204,54 +238,42 @@ export default function CourseCards() {
       </section>
 
       {/* Modal */}
-      {embedUrl && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setActiveDemoUrl(null)}
-        >
-          {/* Fixed Close Button */}
-          <button
+      <AnimatePresence>
+        {embedUrl && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
             onClick={() => setActiveDemoUrl(null)}
-            aria-label="Close video"
-            className="
-        fixed top-4 right-4 z-60
-        h-10 w-10 flex items-center justify-center
-        rounded-full
-        bg-white/40 dark:bg-gray-800/60
-        text-black dark:text-white
-        text-2xl font-semibold leading-none
-        shadow-lg backdrop-blur
-        hover:bg-white/60 dark:hover:bg-gray-700
-        transition
-      "
           >
-            ✕
-          </button>
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setActiveDemoUrl(null)}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-white/20 transition-colors"
+              >
+                <FiX size={24} />
+              </button>
 
-          {/* Modal Box */}
-          <div
-            className="
-        w-full max-w-4xl p-2 rounded-3xl
-        border border-white/10
-        bg-white dark:bg-gray-900
-        shadow-[0_35px_120px_rgba(0,0,0,0.55)]
-      "
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="aspect-video w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
-              <iframe
-                src={embedUrl}
-                title="Course demo video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-xl"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+              <div className="aspect-video w-full">
+                <iframe
+                  src={embedUrl}
+                  title="Course demo video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

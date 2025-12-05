@@ -36,15 +36,15 @@ export default function MobileNavbar() {
 
   return (
     <>
-      <nav className="backdrop-blur-xl border-b border-white/20 fixed top-0 left-0 w-full z-50 shadow-lg px-5 py-4 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 w-full z-50 px-5 py-4 flex items-center justify-between backdrop-blur-xl border-b border-white/20 shadow-lg transition-all duration-300">
         <Link
           href={"/"}
-          className="text-xl font-extrabold drop-shadow-lg font-inter"
+          className="text-xl font-extrabold font-inter flex items-center gap-1"
         >
-          PassTheExcellence
+          <span className="text-[#5227FF]">Pass</span>TheExcellence
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <ModeToggle />
 
           <button
@@ -52,9 +52,9 @@ export default function MobileNavbar() {
             aria-label="Open menu"
             aria-controls="mobile-menu"
             aria-expanded={open}
-            className="p-2 rounded-md"
+            className="p-2 rounded-md hover:bg-white/10 transition-colors"
           >
-            <FiMenu size={28} />
+            <FiMenu size={24} />
           </button>
         </div>
       </nav>
@@ -62,98 +62,91 @@ export default function MobileNavbar() {
       {/* Mobile Menu Drawer */}
       <div
         id="mobile-menu"
-        className={`fixed top-0 right-0 w-3/4 h-full backdrop-blur-2xl border-l border-white/20 shadow-xl z-50
-        transform transition-transform duration-300 ${
+        className={`fixed inset-y-0 right-0 w-full sm:w-80 bg-background/80 backdrop-blur-2xl border-l border-white/20 z-50 transform transition-transform duration-300 ease-in-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
         aria-modal="true"
       >
         <div className="flex items-center justify-between px-5 py-4 border-b border-white/20">
-          <h2 className="text-xl font-bold">Menu</h2>
+          <h2 className="text-lg font-bold">Menu</h2>
           <button
             ref={closeBtnRef}
             onClick={() => setOpen(false)}
             aria-label="Close menu"
-            className="p-2 rounded-md"
+            className="p-2 rounded-md hover:bg-white/10 transition-colors"
           >
-            <FiX size={28} />
+            <FiX size={24} />
           </button>
         </div>
-        <div className="flex flex-col justify-between items-center">
+
+        <div className="flex flex-col h-full overflow-y-auto">
           {/* Navigation Links */}
-          <ul className="flex flex-col justify-center items-center gap-6 p-6 text-lg">
+          <ul className="flex flex-col p-6 gap-2">
             {links.map((link) => {
               const isActive = pathname === link.href;
 
               return (
-                <li key={link.href} className="relative group">
+                <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`transition-colors duration-300 ${
+                    onClick={() => setOpen(false)}
+                    className={`block px-4 py-3 rounded-xl transition-all duration-300 ${
                       isActive
-                        ? "text-[#5227FF] font-semibold"
-                        : "hover:text-[#5227FF]"
+                        ? "bg-[#5227FF]/10 text-[#5227FF] font-semibold"
+                        : "hover:bg-white/10"
                     }`}
                   >
                     {link.name}
                   </Link>
-
-                  {/* Pen underline animation */}
-                  <span
-                    className={`absolute left-0 -bottom-1 h-[3px] rounded-full
-                    bg-[#5227FF] transition-all duration-500
-                    ease-[cubic-bezier(0.22,1,0.36,1)]
-                    ${isActive ? "w-full" : "w-0 group-hover:w-full"}
-                  `}
-                  />
                 </li>
               );
             })}
           </ul>
-          <div>
-            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-4">
-              Pass The Excellence
-            </h2>
-            <p className="text-gray-500 dark:text-gray-400 leading-relaxed w-[200px]">
-              The leading Online German Language institute in Nepal.
-            </p>
 
-            <div className="flex gap-4 mt-6">
+          <div className="mt-auto p-6 border-t border-white/20">
+            <div className="flex justify-center gap-6 mb-6">
               <a
                 href="#"
-                className="w-10 h-10  text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
+                className="text-muted-foreground hover:text-[#5227FF] transition-colors"
               >
-                <FaFacebook />
+                <FaFacebook size={20} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
+                className="text-muted-foreground hover:text-[#5227FF] transition-colors"
               >
-                <RiWhatsappFill />
+                <RiWhatsappFill size={20} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
+                className="text-muted-foreground hover:text-[#5227FF] transition-colors"
               >
-                <FaYoutube />
+                <FaYoutube size={20} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 text-2xl flex items-center justify-center rounded-full bg-black/9 dark:bg-white/10 hover:bg-black/18 dark:hover:bg-white/20 transition"
+                className="text-muted-foreground hover:text-[#5227FF] transition-colors"
               >
-                <AiFillTikTok />
+                <AiFillTikTok size={20} />
               </a>
             </div>
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="block w-full py-3 text-center bg-[#5227FF] text-white font-bold rounded-xl hover:bg-[#4520d4] transition-colors shadow-lg shadow-[#5227FF]/20"
+            >
+              Get Started
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Blur Overlay */}
+      {/* Backdrop */}
       {open && (
         <div
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
           onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
         />
       )}
     </>

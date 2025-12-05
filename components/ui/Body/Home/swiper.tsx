@@ -1,13 +1,14 @@
 "use client";
-import { HiArrowRight } from "react-icons/hi2";
+import { HiArrowRight, HiArrowLeft } from "react-icons/hi2";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
-import { HiArrowLeft } from "react-icons/hi2";
+import { motion } from "framer-motion";
+import { FaQuoteLeft } from "react-icons/fa";
+import { cn } from "@/lib/utils";
 
-// Swiper styles (must be imported for slider to work correctly)
+// Swiper styles
 import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
+import "swiper/css/pagination";
 
 const testimonials = [
   {
@@ -100,46 +101,43 @@ const testimonials = [
     text: "I'm a B1-level student, but after a break in my studies, I've found myself struggling with grammar and the basics again. I've attended many classes, but I truly believe this teacher stands out from the rest. For so low fees, he offers so much value-his teaching is exceptional and deserves far more recognition. I highly recommend trying one or two of his classes; you'll quickly see the difference he makes.",
   },
 ];
+
 export default function SwiperPass() {
   return (
-    <section className="py-6 mt-10 border-2 border-transparent rounded-2xl bg-slate-50 dark:bg-gray-900 transition-colors">
-      <div className="relative mx-auto max-w-6xl px-2">
-        {/* LEFT ARROW */}
-        <div
-          className="
-            absolute left-0 top-1/2 z-50 hidden -translate-y-1/2
-            cursor-pointer select-none md:flex
-            swiper-button-prev-custom
-          "
-        >
-          <span className="text-4xl font-bold text-gray-700 dark:text-gray-300">
-            <HiArrowLeft />
+    <section className="w-full py-20 px-4 bg-gray-50 dark:bg-gray-900/50 transition-colors">
+      <div className="mx-auto max-w-7xl">
+        <div className="text-center mb-12">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
+            Testimonials
           </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Success <span className="text-gradient">Stories</span>
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Hear from our students who have successfully started their German
+            language journey with us.
+          </p>
         </div>
 
-        {/* RIGHT ARROW */}
-        <div
-          className="
-            absolute right-0 top-1/2 z-50 hidden -translate-y-1/2
-            cursor-pointer select-none md:flex
-            swiper-button-next-custom
-          "
-        >
-          <span className="text-4xl font-bold text-gray-700 dark:text-gray-300">
-            <HiArrowRight />
-          </span>
-        </div>
+        <div className="relative px-4 md:px-12">
+          {/* Navigation Buttons */}
+          <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center text-[#5227FF] hover:scale-110 transition-transform disabled:opacity-50 hidden md:flex">
+            <HiArrowLeft size={24} />
+          </button>
+          <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center text-[#5227FF] hover:scale-110 transition-transform disabled:opacity-50 hidden md:flex">
+            <HiArrowRight size={24} />
+          </button>
 
-        <h2 className="mb-10 text-center text-4xl font-bold text-slate-900 dark:text-white">
-          Success Stories
-        </h2>
-        <div className="md:mx-10 mx-3">
           <Swiper
             modules={[Navigation, Autoplay, Pagination]}
             loop={true}
-            autoplay={{ delay: 2500, disableOnInteraction: false }}
-            spaceBetween={24}
-            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+              bulletActiveClass:
+                "swiper-pagination-bullet-active !bg-[#5227FF]",
+            }}
             navigation={{
               nextEl: ".swiper-button-next-custom",
               prevEl: ".swiper-button-prev-custom",
@@ -147,55 +145,51 @@ export default function SwiperPass() {
             grabCursor={true}
             breakpoints={{
               0: { slidesPerView: 1 },
-              480: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
+              640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
+            className="!pb-14"
           >
             {testimonials.map((item) => (
-              <SwiperSlide key={item.index}>
-                <div
-                  className="
-                  flex h-full flex-col items-center text-center
-                  rounded-xl shadow-md border
-                  bg-white border-slate-200
-                  dark:bg-gray-800 dark:border-gray-700
-                  transition-colors max-h-[400px] p-3"
+              <SwiperSlide key={item.index} className="h-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className={cn(
+                    "h-full flex flex-col",
+                    "rounded-2xl pl-8 py-8 pr-2",
+                    "bg-white dark:bg-gray-800",
+                    "border border-gray-100 dark:border-gray-700",
+                    "shadow-sm hover:shadow-xl hover:-translate-y-1",
+                    "transition-all duration-300"
+                  )}
                 >
-                  {/* Avatar */}
-                  <div className="mb-4 h-26 w-26 overflow-hidden rounded-full bg-slate-200 dark:bg-gray-700">
-                    {/* <Image
-                    src={item.imagesrc}
-                    alt={item.name}
-                    width={96}
-                    height={96}
-                    className="h-full w-full object-cover"
-                  /> */}
+                  <div className="mb-6 text-[#5227FF]/20">
+                    <FaQuoteLeft size={40} />
                   </div>
 
-                  {/* Name */}
-                  <h3 className="mb-3 text-xl font-semibold text-slate-900 dark:text-white text-center">
-                    {item.name}
-                  </h3>
-
-                  {/* SCROLLABLE TEXT with scrollbar hidden */}
-                  <p
-                    className="
-                    text-lg leading-relaxed text-slate-700 dark:text-gray-400
-                    overflow-y-scroll px-2 no-scrollbar text-center
-                  "
-                    style={{ maxHeight: "180px" }}
-                  >
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow overflow-y-auto max-h-[200px] pr-4 custom-scrollbar">
                     {item.text}
                   </p>
-                </div>
+
+                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-gray-100 dark:border-gray-700">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#5227FF] to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+                      {item.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 dark:text-white">
+                        {item.name}
+                      </h3>
+                      <p className="text-sm text-[#5227FF]">Student</p>
+                    </div>
+                  </div>
+                </motion.div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       </div>
-
-      {/* HIDE SCROLLBAR (works on all browsers) */}
     </section>
   );
 }

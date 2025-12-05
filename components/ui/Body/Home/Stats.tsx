@@ -1,117 +1,73 @@
 "use client";
-import { MdGroups } from "react-icons/md";
 
 import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 
-interface StatBoxProps {
-  value: number;
-  label: string;
-  subLabel: string;
-  bgColor: string;
-  imgSrc?: string;
-}
+const stats = [
+  { label: "Active Students", value: 500, suffix: "+" },
+  { label: "Success Stories", value: 1000, suffix: "+" },
+  { label: "Expert Instructors", value: 15, suffix: "+" },
+  { label: "Years of Excellence", value: 5, suffix: "+" },
+];
 
-/* COUNT-UP ANIMATION HOOK */
-function useCountAnimation(target: number, trigger: boolean) {
+const CountUp = ({ value, suffix }: { value: number; suffix: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!trigger) return;
+    if (isInView) {
+      const duration = 2000; // 2 seconds
+      const steps = 60;
+      const stepTime = duration / steps;
+      const increment = value / steps;
+      let current = 0;
 
-    let start = 0;
-    const duration = 900;
-    const stepTime = 10;
-    const totalSteps = duration / stepTime;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= value) {
+          setCount(value);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(current));
+        }
+      }, stepTime);
 
-    const interval = setInterval(() => {
-      start++;
-      const progress = start / totalSteps;
-      setCount(Math.floor(progress * target));
-
-      if (start >= totalSteps) clearInterval(interval);
-    }, stepTime);
-
-    return () => clearInterval(interval);
-  }, [trigger, target]);
-
-  return count;
-}
-
-/* SINGLE STAT BOX COMPONENT */
-const StatBox = ({ value, label, subLabel, bgColor, imgSrc }: StatBoxProps) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: false, amount: 0.4 });
-  const count = useCountAnimation(value, inView);
+      return () => clearInterval(timer);
+    }
+  }, [isInView, value]);
 
   return (
-    <motion.div
-      ref={ref}
-      className="relative group flex flex-col justify-center items-center rounded-xl p-10 w-full h-56 transition-all hover:shadow-2xl cursor-default"
-      style={{ backgroundColor: bgColor }}
-      initial={{ opacity: 0, translateY: "50px" }}
-      whileInView={{ opacity: 1, translateY: "0px" }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-    >
-      {/* Count Number */}
-      <h2 className="text-4xl font-extrabold text-gray-800">{count}+</h2>
-
-      <p className="text-lg font-semibold text-gray-700 mt-1">{label}</p>
-      {subLabel && <p className="text-sm text-gray-500">{subLabel}</p>}
-
-      <div className="transition-scale duration-300 text-7xl p-2 text-center group-hover:scale-120">
-        {imgSrc}
-      </div>
-    </motion.div>
+    <span ref={ref} className="font-bold">
+      {count}
+      {suffix}
+    </span>
   );
 };
 
-/* MAIN STATS SECTION */
-export default function StatsSection() {
+export default function Stats() {
   return (
-    <section className="w-full flex flex-col justify-center items-center py-8 px-4 border-2 rounded-2xl bg-gray-100 dark:bg-gray-900 mt-12 ">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-center">
-        A Platform Trusted by Students
-      </h1>
-
-      <p className="text-center max-w-2xl mt-2">
-        We aim to transform not just through words, but with the quality we
-        provide!
-      </p>
-
-      {/* GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 w-full max-w-6xl">
-        <StatBox
-          value={1000}
-          label="Happy Students"
-          subLabel=""
-          bgColor="#FDEEDC"
-          imgSrc="🧑‍🎓"
-        />
-
-        <StatBox
-          value={2000}
-          label="Hours of Teaching"
-          subLabel=""
-          bgColor="#FFE4E8"
-          imgSrc="⏱️"
-        />
-
-        <StatBox
-          value={3000}
-          label="Video Lectures"
-          subLabel=""
-          bgColor="#DDF6FF"
-          imgSrc="🎥"
-        />
-
-        <StatBox
-          value={10}
-          label="Teachers Team"
-          subLabel=""
-          bgColor="#E8E1FF"
-          imgSrc="👥"
-        />
+    <section className="w-full py-12 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+            >
+              <div className="text-4xl md:text-5xl text-[#5227FF] mb-2">
+                <CountUp value={stat.value} suffix={stat.suffix} />
+              </div>
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

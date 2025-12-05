@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { FiArrowRight } from "react-icons/fi";
+import { cn } from "@/lib/utils";
 
 interface OurCoursesButtonProps {
   text: string;
@@ -16,36 +18,50 @@ const OurCoursesButton: React.FC<OurCoursesButtonProps> = ({
   return (
     <Link
       href={href}
-      aria-label={text}
-      title={text}
-      className="relative group flex items-center gap-3 justify-center bg-linear-to-br from-[#5227FF] to-[#7440f8] text-white p-2 rounded-full overflow-hidden border border-white/20 shadow-lg active:scale-95 hover:opacity-80 transition-all duration-200"
+      className={cn(
+        "group relative inline-flex items-center gap-4",
+        "pl-2 pr-16 py-2 rounded-full",
+        "bg-gradient-to-r from-[#5227FF] to-[#7C3AED]",
+        "text-white",
+        "shadow-[0_0_0_4px_rgba(82,39,255,0.1)]",
+        "hover:shadow-[0_0_0_6px_rgba(82,39,255,0.2)] hover:-translate-y-0.5",
+        "transition-all duration-300 ease-out",
+        "border border-white/10"
+      )}
     >
-      {/* Infinite shimmer */}
-      <div className="h-[170%] w-20 bg-linear-to-r from-white/5 via-white/40 to-white/5 absolute blur-lg -rotate-135 -left-20 animate-[shimmerMove_1.6s_linear_infinite]" />
+      {/* Pulse Effect for Focus */}
+      <div className="absolute inset-0 rounded-full ring-1 ring-white/30 animate-pulse" />
 
-      {/* Avatar */}
-      <div className="relative size-10 md:size-12 rounded-full overflow-hidden bg-white/20 z-10 p-3">
-        <Image src={imgSrc} alt={text} fill sizes="30px" />
+      {/* Shimmer Effect */}
+      <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-[100%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[100%] animate-[shimmerMove_3s_infinite]" />
       </div>
 
-      {/* Text */}
-      <div className="text-left z-10">
-        <div className="text-lg font-semibold">{text}</div>
-      </div>
-
-      {/* Arrow */}
-      <svg
-        className="w-6 h-6 z-10 transition-transform group-hover:translate-x-2 duration-300"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
-        <path
-          d="M9 5l7 7-7 7"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
+      {/* Avatar Container */}
+      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shrink-0 bg-white/10 shadow-inner z-10">
+        <Image
+          src={imgSrc}
+          alt=""
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          sizes="48px"
         />
-      </svg>
+      </div>
+
+      {/* Text Content */}
+      <div className="flex flex-col items-start z-10">
+        <span className="text-base md:text-lg font-bold tracking-wide leading-none drop-shadow-md">
+          {text}
+        </span>
+        <span className="text-[10px] md:text-xs text-indigo-100 font-medium mt-1 opacity-90 group-hover:opacity-100 transition-opacity">
+          Start Your Journey
+        </span>
+      </div>
+
+      {/* Arrow Icon */}
+      <div className="absolute right-2 w-11 h-11 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 group-hover:translate-x-1 z-10">
+        <FiArrowRight className="w-5 h-5 text-white" />
+      </div>
     </Link>
   );
 };

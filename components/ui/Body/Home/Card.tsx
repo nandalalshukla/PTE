@@ -2,126 +2,123 @@
 import "animate.css";
 import { motion } from "framer-motion";
 
-// import { color } from "motion";
-
-// import Image from "next/image";
-
 const CardData = [
   {
     title: "Access to free quality education",
     tags: ["Bachelors", "Masters"],
     description:
       "Explore a wide range of courses designed to help you excel in your academic journey.",
-    iconSrc: "/neet-icon.png",
-    color: "#c4e4f0",
-    emoji: "🎓",
+    icon: "🎓",
+    color: "from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20",
+    borderColor: "border-blue-200 dark:border-blue-800",
   },
   {
     title: "Ausbildung/Aupair",
     tags: ["Vocational", "Practical"],
     description:
       "Gain hands-on experience and practical skills and experience a different culture.",
-    iconSrc: "/ausbildung-icon.png",
-    color: "#d8d8fb",
-    emoji: "🧑‍🔧",
+    icon: "🧑‍🔧",
+    color:
+      "from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20",
+    borderColor: "border-purple-200 dark:border-purple-800",
   },
   {
     title: "Gateway to European Opportunities",
     tags: ["Europe", "Opportunities"],
     description:
       "Unlock access to educational and career opportunities across Europe.",
-    iconSrc: "/europe-icon.png",
-    color: "#fbe4bf",
-    emoji: "🌍",
+    icon: "🌍",
+    color:
+      "from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20",
+    borderColor: "border-orange-200 dark:border-orange-800",
   },
   {
     title: "Explore and Travel",
     tags: ["Adventure", "Culture"],
     description:
       "Discover new places, cultures, and experiences while expanding your horizons.",
-    iconSrc: "/travel-icon.png",
-    color: "#fcd3d3",
-    emoji: "✈️",
+    icon: "✈️",
+    color: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20",
+    borderColor: "border-red-200 dark:border-red-800",
   },
-
-  // ⭐ New Objects
   {
     title: "High-Demand Global Language",
     tags: ["Career Growth", "International"],
     description:
-      "German is one of the most in-demand languages worldwide, opening doors to global job .",
-    iconSrc: "/german-career.png",
-    color: "#e0f4d9",
-    emoji: "🌐",
+      "German is one of the most in-demand languages worldwide, opening doors to global job markets.",
+    icon: "🌐",
+    color:
+      "from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20",
+    borderColor: "border-green-200 dark:border-green-800",
   },
   {
     title: "Access to Scholarships & Study Abroad",
     tags: ["Scholarships", "Education"],
     description:
-      "Learning German significantly increases your chances of securing scholarships and .",
-    iconSrc: "/german-education.png",
-    color: "#fde2f5",
-    emoji: "🎒",
+      "Learning German significantly increases your chances of securing scholarships and funding.",
+    icon: "🎒",
+    color: "from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20",
+    borderColor: "border-pink-200 dark:border-pink-800",
   },
 ];
 
 export default function PASSCard() {
   return (
-    <div className="w-full flex flex-col bg-gray-100 dark:bg-gray-900 mt-9 rounded-2xl justify-center items-center p-5 ">
-      <h1 className="text-4xl font-extrabold mb-5 text-gray-900 dark:text-white p-4 text-center">
-        Why Learn German❓
-      </h1>
+    <section className="w-full py-16 px-4">
+      <div className="text-center mb-12">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
+          Why Choose German?
+        </span>
+        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+          Unlock Your Potential
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Learning German opens doors to world-class education, career
+          opportunities, and cultural experiences.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto">
         {CardData.map((card, index) => (
-          <div
+          <motion.div
             key={index}
-            className="flex items-center justify-between w-full p-6 rounded-xl bg-white dark:bg-gray-800 border-3 border-gray-900 dark:shadow-lg dark:hover:shadow-gray-600 relative dark:hover:bg-gray-900 hover:border-[#8A5CFF] transition-all duration-300 group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className={`relative p-6 rounded-2xl bg-gradient-to-br ${card.color} border ${card.borderColor} hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group overflow-hidden`}
           >
-            {/* Left Area */}
-            <div className="z-10 pr-4 w-[65%]">
-              <h2 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
-                {card.title}
-              </h2>
+            <div className="absolute top-0 right-0 p-4 opacity-10 text-8xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform duration-500">
+              {card.icon}
+            </div>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-3">
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {card.icon}
+              </div>
+
+              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-[#5227FF] transition-colors">
+                {card.title}
+              </h3>
+
+              <div className="flex flex-wrap gap-2 mb-4">
                 {card.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 rounded-full bg-gray-200 dark:bg-fuchsia-800 text-gray-700 dark:text-gray-100 text-sm"
+                    className="px-2.5 py-0.5 rounded-full bg-white/60 dark:bg-black/20 text-gray-700 dark:text-gray-300 text-xs font-medium backdrop-blur-sm"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <p className="text-sm text-gray-900 dark:text-gray-100 mb-4">
+              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                 {card.description}
               </p>
-
-              <button className="flex items-center gap-2 text-gray-800 dark:text-gray-200 font-medium group">
-                Explore Category
-                <span className="p-1 bg-gray-100 dark:bg-gray-700 rounded-full group-hover:bg-gray-200 dark:group-hover:bg-gray-600 transition">
-                  ➜
-                </span>
-              </button>
             </div>
-
-            {/* Curved Color Section */}
-            <div className="absolute right-0 top-0 h-full w-1/3 pointer-events-none rounded-r-xl">
-              <div
-                className="h-full w-full rounded-l-[80px] overflow-hidden rounded-r-xl"
-                style={{ backgroundColor: card.color }}
-              >
-                <div className="w-full h-full flex items-center justify-center text-7xl group-hover:scale-145 transition-all duration-300">
-                  {card.emoji}
-                </div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -19,7 +19,6 @@ export default function Home() {
         {/* PASS CARD SECTION */}
         <SwiperPass />
         <div className="mt-14">
-
           <PASSCard />
         </div>
       </div>
