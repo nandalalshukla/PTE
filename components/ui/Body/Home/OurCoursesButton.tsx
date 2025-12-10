@@ -29,12 +29,33 @@ const OurCoursesButton: React.FC<OurCoursesButtonProps> = ({
         "border border-white/10"
       )}
     >
-      {/* Pulse Effect for Focus */}
-      <div className="absolute inset-0 rounded-full ring-1 ring-white/30 animate-pulse" />
+      {/* Visible Premium Pulse */}
+      <div
+        className="
+    absolute inset-[-3px]
+    rounded-full
+    ring-1 ring-[#5227FF]/40 dark:ring-white/30
+    shadow-[0_0_3px_rgba(82,39,255,0.35)]
+    dark:shadow-[0_0_3px_rgba(255,255,255,0.25)]
+    animate-premium-pulse
+  "
+      />
 
-      {/* Shimmer Effect */}
+      {/* Visible Elegant Shimmer */}
       <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-[100%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[100%] animate-[shimmerMove_3s_infinite]" />
+        <div
+          className="
+      absolute inset-y-0
+      w-[105%]
+      -translate-x-[130%]
+      bg-gradient-to-r
+      from-transparent
+      via-[#5227FF]/35 dark:via-white/30
+      to-transparent
+      skew-x-12
+      animate-premium-shimmer
+    "
+        />
       </div>
 
       {/* Avatar Container */}

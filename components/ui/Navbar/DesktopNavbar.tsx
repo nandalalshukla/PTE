@@ -42,10 +42,11 @@ export default function DesktopNavbar() {
                 </Link>
 
                 <span
-                  className={`absolute left-0 -bottom-1 h-[3px] bg-[#5227FF] rounded-full
-    transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-    ${isActive ? "w-full" : "w-0 group-hover:w-full"}
-  `}
+                  className={`absolute left-0 -bottom-1 h-[3px] w-full bg-[#5227FF] rounded-full transform-gpu transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isActive
+                      ? "origin-left scale-x-100"
+                      : "origin-right scale-x-0 group-hover:origin-left group-hover:scale-x-100"
+                  }`}
                 ></span>
               </li>
             );

@@ -6,13 +6,19 @@ import { FaFacebook, FaWhatsapp, FaGoogle, FaTiktok } from "react-icons/fa";
 
 export default function Community() {
   return (
-    <section className="w-full py-16 px-4">
+    <section className="relative w-full py-16 px-4 bg-gradient-to-b from-[#f4f1ff] via-white to-[#f7f5ff] dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 opacity-70">
+        <div className="absolute -left-24 -top-32 h-64 w-64 rounded-full bg-[#5227FF]/8 blur-3xl" />
+        <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-purple-400/10 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-blue-400/10 blur-3xl" />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="glass rounded-3xl overflow-hidden max-w-7xl mx-auto flex flex-col lg:flex-row items-center"
+        className="glass rounded-3xl overflow-hidden max-w-7xl mx-auto flex flex-col lg:flex-row items-center relative z-10"
       >
         {/* Image Section */}
         <div className="w-full lg:w-1/2 relative h-[400px] lg:h-[500px]">

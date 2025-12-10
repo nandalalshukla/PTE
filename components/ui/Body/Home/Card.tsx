@@ -1,6 +1,7 @@
 "use client";
 import "animate.css";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const CardData = [
   {
@@ -9,8 +10,9 @@ const CardData = [
     description:
       "Explore a wide range of courses designed to help you excel in your academic journey.",
     icon: "🎓",
-    color: "from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
+    accentFrom: "#4F46E5",
+    accentTo: "#7C3AED",
+    glow: "from-[#4F46E5]/35 via-[#7C3AED]/15 to-transparent",
   },
   {
     title: "Ausbildung/Aupair",
@@ -18,9 +20,9 @@ const CardData = [
     description:
       "Gain hands-on experience and practical skills and experience a different culture.",
     icon: "🧑‍🔧",
-    color:
-      "from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20",
-    borderColor: "border-purple-200 dark:border-purple-800",
+    accentFrom: "#8B5CF6",
+    accentTo: "#C084FC",
+    glow: "from-[#8B5CF6]/30 via-[#C084FC]/15 to-transparent",
   },
   {
     title: "Gateway to European Opportunities",
@@ -28,9 +30,9 @@ const CardData = [
     description:
       "Unlock access to educational and career opportunities across Europe.",
     icon: "🌍",
-    color:
-      "from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20",
-    borderColor: "border-orange-200 dark:border-orange-800",
+    accentFrom: "#F59E0B",
+    accentTo: "#F97316",
+    glow: "from-[#F59E0B]/30 via-[#F97316]/15 to-transparent",
   },
   {
     title: "Explore and Travel",
@@ -38,8 +40,9 @@ const CardData = [
     description:
       "Discover new places, cultures, and experiences while expanding your horizons.",
     icon: "✈️",
-    color: "from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20",
-    borderColor: "border-red-200 dark:border-red-800",
+    accentFrom: "#EF4444",
+    accentTo: "#F97316",
+    glow: "from-[#EF4444]/30 via-[#F97316]/15 to-transparent",
   },
   {
     title: "High-Demand Global Language",
@@ -47,9 +50,9 @@ const CardData = [
     description:
       "German is one of the most in-demand languages worldwide, opening doors to global job markets.",
     icon: "🌐",
-    color:
-      "from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20",
-    borderColor: "border-green-200 dark:border-green-800",
+    accentFrom: "#10B981",
+    accentTo: "#34D399",
+    glow: "from-[#10B981]/30 via-[#34D399]/15 to-transparent",
   },
   {
     title: "Access to Scholarships & Study Abroad",
@@ -57,8 +60,9 @@ const CardData = [
     description:
       "Learning German significantly increases your chances of securing scholarships and funding.",
     icon: "🎒",
-    color: "from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20",
-    borderColor: "border-pink-200 dark:border-pink-800",
+    accentFrom: "#EC4899",
+    accentTo: "#F472B6",
+    glow: "from-[#EC4899]/30 via-[#F472B6]/15 to-transparent",
   },
 ];
 
@@ -86,35 +90,66 @@ export default function PASSCard() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={`relative p-6 rounded-2xl bg-gradient-to-br ${card.color} border ${card.borderColor} hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group overflow-hidden`}
+            className="group relative h-full"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-10 text-8xl transform translate-x-4 -translate-y-4 group-hover:scale-110 transition-transform duration-500">
-              {card.icon}
-            </div>
-
-            <div className="relative z-10">
-              <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {card.icon}
-              </div>
-
-              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-[#5227FF] transition-colors">
-                {card.title}
-              </h3>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {card.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="px-2.5 py-0.5 rounded-full bg-white/60 dark:bg-black/20 text-gray-700 dark:text-gray-300 text-xs font-medium backdrop-blur-sm"
+            <div className="relative rounded-2xl p-[1px] bg-white/60 dark:bg-white/10">
+              <div className="h-full rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-md transition-transform duration-200 group-hover:-translate-y-1 p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl text-white"
+                    style={{
+                      backgroundImage: `linear-gradient(135deg, ${card.accentFrom}, ${card.accentTo})`,
+                    }}
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                    {card.icon}
+                  </div>
+                  <div className="inline-block max-w-full space-y-1">
+                    <h3
+                      className="
+    inline text-lg font-bold text-gray-900 dark:text-white leading-tight
+    whitespace-normal break-words
 
-              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                {card.description}
-              </p>
+    bg-no-repeat
+    [background-size:0%_2px]
+    [background-position:0%_100%]
+
+    group-hover:[background-size:100%_2px]
+    group-hover:[background-position:0%_100%]
+
+    transition-[background-size,background-position]
+    duration-1000
+    ease-[cubic-bezier(0.22,1,0.36,1)]
+
+    [box-decoration-break:clone]
+    [-webkit-box-decoration-break:clone]
+  "
+                      style={{
+                        backgroundImage: `linear-gradient(90deg, ${card.accentFrom}, ${card.accentTo})`,
+                      }}
+                    >
+                      {card.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {card.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="px-2.5 py-1 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 border border-gray-100 dark:border-gray-700"
+                      style={{
+                        backgroundColor: `${card.accentFrom}10`,
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {card.description}
+                </p>
+              </div>
             </div>
           </motion.div>
         ))}

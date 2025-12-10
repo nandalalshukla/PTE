@@ -39,21 +39,49 @@ export default function Footer() {
 
             <div className="flex gap-3">
               {[
-                { icon: FaFacebook, href: "#", color: "hover:text-[#1877F2]" },
-                { icon: FaInstagram, href: "#", color: "hover:text-[#E4405F]" },
-                { icon: FaLinkedin, href: "#", color: "hover:text-[#0A66C2]" },
-                { icon: FaYoutube, href: "#", color: "hover:text-[#FF0000]" },
+                {
+                  icon: FaFacebook,
+                  href: "#",
+                  color: "hover:text-[#1877F2]",
+                  darkColor: "dark:hover:text-[#1877F2]",
+                },
+                {
+                  icon: FaInstagram,
+                  href: "#",
+                  color: "hover:text-[#E4405F]",
+                  darkColor: "dark:hover:text-[#E4405F]",
+                },
+                {
+                  icon: FaLinkedin,
+                  href: "#",
+                  color: "hover:text-[#0A66C2]",
+                  darkColor: "dark:hover:text-[#0A66C2]",
+                },
+                {
+                  icon: FaYoutube,
+                  href: "#",
+                  color: "hover:text-[#FF0000]",
+                  darkColor: "dark:hover:text-[#FF0000]",
+                },
                 {
                   icon: FaTiktok,
                   href: "#",
-                  color: "hover:text-black dark:hover:text-white",
+                  color: "hover:text-black",
+                  darkColor: "dark:hover:text-white",
                 },
-                { icon: FaWhatsapp, href: "#", color: "hover:text-[#25D366]" },
+                {
+                  icon: FaWhatsapp,
+                  href: "#",
+                  color: "hover:text-[#25D366]",
+                  darkColor: "dark:hover:text-[#25D366]",
+                },
               ].map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className={`w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-sm text-gray-500 dark:text-gray-400 transition-all hover:-translate-y-1 ${social.color}`}
+                  className={`w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-sm text-gray-500 dark:text-gray-400 transition-all hover:-translate-y-1 ${
+                    social.color
+                  } ${social.darkColor || ""}`}
                 >
                   <social.icon size={18} />
                 </a>
