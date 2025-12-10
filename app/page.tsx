@@ -4,6 +4,7 @@ import StatsSection from "@/components/ui/Body/Home/Stats";
 import Community from "@/components/ui/Body/Home/Community";
 import CourseCards from "@/components/ui/Body/Home/Courses";
 import SwiperPass from "@/components/ui/Body/Home/swiper";
+import ResultCard from "@/components/ui/Body/Home/ResultCard";
 import "animate.css";
 
 export default function Home() {
@@ -18,6 +19,15 @@ export default function Home() {
         <Community />
         {/* PASS CARD SECTION */}
         <SwiperPass />
+        <div className="width-full flext flex-col md:flex-row lg:flexrow">
+          <ResultCard
+            imageSrc="/narayan.png"
+            altText="Top score screenshot"
+            captionText="Our recent results"
+            displayOverlayContent
+            overlayContent={<span>⭐ B1 Passed</span>}
+          />
+        </div>
       </div>
     </main>
   );
