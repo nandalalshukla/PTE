@@ -162,7 +162,7 @@ export default function SwiperPass() {
                     "rounded-2xl pl-8 py-8 pr-2",
                     "bg-white dark:bg-gray-800",
                     "border border-gray-100 dark:border-gray-700",
-                    "shadow-sm hover:shadow-xl hover:-translate-y-1",
+                    "shadow-sm hover:shadow-xl",
                     "transition-all duration-300"
                   )}
                 >
