@@ -11,7 +11,7 @@ function Landing() {
       <div className="w-full text-center md:text-left px-2 md:px-0">
         {/* MAIN HEADING */}
         <div className="flex flex-col lg:flex-row md:flex-row">
-          <div className="basis-[46%]">
+          <div className="md:basis[46%] lg:basis-[46%]">
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight animate__animated animate__fadeInDown group">
               <span className="inline-block p-2 mb-1">
                 Welcome to{" "}
@@ -52,7 +52,7 @@ function Landing() {
             </div>
           </div>
 
-          <div className="w-full  flex justify-center md:justify-end lg:justify-end animate__animated animate__fadeInDown lg:basis-[65%] mt-4">
+          <div className="w-full  flex justify-center md:justify-end lg:justify-end animate__animated animate__fadeInDown md:basis-[54%] lg:basis-[54%] mt-4">
             <LandingVdo videoId="41n_ogE64Xs" />
           </div>
         </div>
