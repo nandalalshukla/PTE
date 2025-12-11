@@ -20,7 +20,7 @@ const OurCoursesButton: React.FC<OurCoursesButtonProps> = ({
       href={href}
       className={cn(
         "group relative inline-flex items-center gap-4",
-        "pl-2 pr-16 py-2 rounded-full",
+        "pl-4 pr-16 py-2 rounded-full",
         "bg-gradient-to-r from-[#5227FF] to-[#7C3AED]",
         "text-white",
         "shadow-[0_0_0_4px_rgba(82,39,255,0.1)]",

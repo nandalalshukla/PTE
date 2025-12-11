@@ -5,6 +5,7 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import { FaQuoteLeft } from "react-icons/fa";
 import { cn } from "@/lib/utils";
+import GoogleRating from "./GoogleRating";
 
 // Swiper styles
 import "swiper/css";
@@ -104,7 +105,7 @@ const testimonials = [
 
 export default function SwiperPass() {
   return (
-    <section className="w-full py-20 px-4 bg-gray-50 dark:bg-gray-900/50 transition-colors">
+    <section className="w-full py-10 bg-gray-50 dark:bg-gray-900/50 transition-colors">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
@@ -119,7 +120,7 @@ export default function SwiperPass() {
           </p>
         </div>
 
-        <div className="relative px-4 md:px-12">
+        <div className="relative px-2">
           {/* Navigation Buttons */}
           <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center text-[#5227FF] hover:scale-110 transition-transform disabled:opacity-50 hidden md:flex">
             <HiArrowLeft size={24} />
@@ -131,7 +132,7 @@ export default function SwiperPass() {
           <Swiper
             modules={[Navigation, Autoplay, Pagination]}
             loop={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            autoplay={{ delay: 6000, disableOnInteraction: false }}
             spaceBetween={30}
             pagination={{
               clickable: true,
@@ -169,7 +170,7 @@ export default function SwiperPass() {
                     <FaQuoteLeft size={40} />
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow overflow-y-auto max-h-[200px] pr-4 custom-scrollbar">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow overflow-y-auto max-h-[200px] pr-2 custom-scrollbar">
                     {item.text}
                   </p>
 
@@ -188,6 +189,38 @@ export default function SwiperPass() {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+        <div className="mt-12 flex flex-col justify-center items-center gap-6">
+          <div className="text-center flex flex-col justify-center items-center">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white p-2">
+              4.9 Stars Rating on Google
+            </h2>
+            <span className="p-3 text-center">
+              <GoogleRating />
+            </span>
+          </div>
+          <div className="flex justify-center items-center">
+            <a
+              href="https://g.page/r/CQS4X4GZJf-eEBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5
+             rounded-lg border
+             bg-white dark:bg-[#1a1a1a]
+             border-gray-300 dark:border-gray-700
+             text-gray-800 dark:text-gray-200
+             shadow-sm hover:shadow-md
+             hover:bg-gray-50 dark:hover:bg-[#252525]
+             transition-all duration-200"
+            >
+              <img
+                src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+                className="w-5 h-5"
+                alt="Google Logo"
+              />
+              Review Us on Google
+            </a>
+          </div>
         </div>
       </div>
     </section>

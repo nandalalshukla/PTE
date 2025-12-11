@@ -19,14 +19,32 @@ export default function Home() {
         <Community />
         {/* PASS CARD SECTION */}
         <SwiperPass />
-        <div className="width-full flext flex-col md:flex-row lg:flexrow">
-          <ResultCard
-            imageSrc="/narayan.png"
-            altText="Top score screenshot"
-            captionText="Our recent results"
-            displayOverlayContent
-            overlayContent={<span>⭐ B1 Passed</span>}
-          />
+        <div className="mt-10">
+          <h2 className="text-4xl font-bold text-center">Our Results Speak!</h2>
+          <div className="width-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-10">
+            <ResultCard
+              imageSrc="/narayan.png"
+              altText="Top score screenshot"
+              captionText="Our recent results"
+              displayOverlayContent
+              overlayContent={<span>⭐ B1 Passed</span>}
+            />
+            <ResultCard
+              imageSrc="/nirajan.png"
+              altText="Top score screenshot"
+              captionText="Our recent results"
+              displayOverlayContent
+              overlayContent={<span>⭐ B2 Passed</span>}
+            />
+            <ResultCard
+              imageSrc="/prakash.png"
+              altText="Top score screenshot"
+              captionText="Our recent results"
+              displayOverlayContent
+              overlayContent={<span>⭐ B1 Passed</span>}
+            />
+          </div>
+          <h2 className="text-lg text-gray-600 text-center mt-3 p-2 ">+Many More</h2>
         </div>
       </div>
     </main>
