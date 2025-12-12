@@ -5,7 +5,14 @@ import LandingVdo from "./LandingVdo";
 
 function Landing() {
   return (
-    <div className="w-full px-3 sm:px-4 md:px-6 mt-16 sm:mt-12 md:mt-10">
+    <div className="relative w-full px-3 sm:px-4 md:px-6 mt-16 sm:mt-12 md:mt-10">
+      {/* Animated Background Elements */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-20 -left-20 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-[#5227FF]/10 blur-3xl animate-blob" />
+        <div className="absolute top-1/2 -right-20 w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-purple-400/10 blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-20 left-1/3 w-64 sm:w-72 h-64 sm:h-72 rounded-full bg-blue-400/10 blur-3xl animate-blob animation-delay-4000" />
+      </div>
+
       {/* Main container - stacks on mobile/tablet, side-by-side on xl+ */}
       <div className="mx-auto max-w-7xl flex flex-col xl:flex-row xl:items-center gap-6 md:gap-8 xl:gap-12">
         {/* LEFT TEXT SECTION */}

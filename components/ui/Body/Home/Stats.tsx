@@ -47,7 +47,12 @@ const CountUp = ({ value, suffix }: { value: number; suffix: string }) => {
 
 export default function Stats() {
   return (
-    <section className="w-full py-8 sm:py-10 lg:py-12 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
+    <section className="relative w-full py-8 sm:py-10 lg:py-12 bg-gradient-to-r from-[#f8f7ff] via-white to-[#f8f7ff] dark:from-gray-900 dark:via-gray-900/80 dark:to-gray-900 border-y border-gray-100 dark:border-gray-800 overflow-hidden">
+      {/* Subtle animated accent */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-32 bg-[#5227FF]/5 blur-3xl rounded-full animate-pulse-slow" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
           {stats.map((stat, index) => (

@@ -42,6 +42,17 @@ const CourseData = [
     demoVdo: "https://youtu.be/UY4H0zujVpA?si=7c3WZcvAEeFltmzC",
     popular: false,
   },
+  {
+    imageSrc: "/1pte.png",
+    title: "Personalized Tutoring",
+    description:
+      "Advance your German skills with our B1 Blended Intensive Course, designed for intermediate learners. This course emphasizes practical communication, complex grammar structures, and cultural understanding.",
+    COurseDuration: "8 weeks",
+    ClassDuration: "2 hours/day, 6 days/week",
+    price: "रु Custom Pricing",
+    demoVdo: "https://youtu.be/UY4H0zujVpA?si=7c3WZcvAEeFltmzC",
+    popular: false,
+  },
 ];
 
 // Extract YouTube embed URL
@@ -121,7 +132,7 @@ export default function CourseCards() {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
             {CourseData.map((course, idx) => (
               <motion.article
                 key={course.title}
@@ -130,7 +141,11 @@ export default function CourseCards() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
                 className={cn(
+                  // condition for showing ONLY the card with index === 2 on md
+                  idx === 3 ? "hidden lg:hidden md:block" : "block",
+
                   "group relative flex flex-col h-full rounded-3xl p-1",
+
                   course.popular
                     ? "bg-gradient-to-b from-[#5227FF] to-purple-600"
                     : "bg-gray-200 dark:bg-gray-800"

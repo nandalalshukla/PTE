@@ -68,7 +68,13 @@ const CardData = [
 
 export default function PASSCard() {
   return (
-    <section className="w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4">
+    <section className="relative w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4 overflow-hidden">
+      {/* Animated Background */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-[#5227FF]/8 blur-3xl animate-blob" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-purple-500/8 blur-3xl animate-blob animation-delay-2000" />
+      </div>
+
       <div className="text-center mb-8 sm:mb-10 lg:mb-12">
         <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
           Why Choose German?

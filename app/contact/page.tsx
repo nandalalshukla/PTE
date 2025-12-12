@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 
 import { useState } from "react";
 
@@ -45,13 +46,20 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setIsSubmitting(true)
+          try {
+            const res = await axios.post("/api/send-email", formData);
+            console.log(res.data);
+            alert("Email sent!");
+          } catch (err) {
+            console.error(err);
+            alert("Failed to send email");
+          }
     setIsSubmitting(false);
     setSubmitted(true);
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
   };
+
 
   return (
     <main className="min-h-screen pt-24 pb-16">
@@ -221,7 +229,8 @@ export default function Contact() {
                     />
                   </div>
                   <button
-                    type="submit"
+                      type="submit"
+                      onClick={()=>console.log(formData)}
                     disabled={isSubmitting}
                     className="w-full py-4 bg-[#5227FF] text-white font-bold rounded-xl hover:bg-[#4520d4] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >

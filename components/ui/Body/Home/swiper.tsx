@@ -105,7 +105,13 @@ const testimonials = [
 
 export default function SwiperPass() {
   return (
-    <section className="w-full py-8 sm:py-10 lg:py-12 bg-gray-50 dark:bg-gray-900/50 transition-colors">
+    <section className="relative w-full py-8 sm:py-10 lg:py-12 bg-gradient-to-b from-[#faf9ff] via-gray-50 to-[#faf9ff] dark:from-gray-900/70 dark:via-gray-900/50 dark:to-gray-900/70 transition-colors overflow-hidden">
+      {/* Animated Background */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-10 right-0 w-64 h-64 rounded-full bg-[#5227FF]/8 blur-3xl animate-blob" />
+        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-purple-400/8 blur-3xl animate-blob animation-delay-4000" />
+      </div>
+
       <div className="mx-auto max-w-7xl px-2 sm:px-4">
         <div className="text-center mb-8 sm:mb-10 lg:mb-12 px-2">
           <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
