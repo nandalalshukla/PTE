@@ -6,19 +6,37 @@ const teamMembers = [
   {
     name: "Purushottam Shukla",
     role: "Founder & Lead Instructor",
-    image: "/avatar.jpg",
+    image: "/purushottam.jpg",
     bio: "Passionate German language educator with years of experience helping Nepali students achieve their language goals.",
   },
   {
     name: "Unish Timsina",
     role: "Senior Instructor",
-    image: "/avatar.jpg",
+    image: "/unish.jpg",
     bio: "Specialized in A1-B1 curriculum development and interactive teaching methodologies.",
+  },
+  {
+    name: "Sushant Acharya",
+    role: "Instructor",
+    image: "/sushant.jpg",
+    bio: "Expert in conversational German and exam preparation strategies.",
   },
   {
     name: "Aarushi Singh",
     role: "Instructor",
-    image: "/avatar.jpg",
+    image: "/aarushi.jpg",
+    bio: "Specialized in A1-B1 curriculum development and interactive teaching methodologies.",
+  },
+  {
+    name: "Subekshya",
+    role: "Instructor",
+    image: "/subekshya.jpg",
+    bio: "Expert in conversational German and exam preparation strategies.",
+  },
+  {
+    name: "Nirajan Dahal",
+    role: "Instructor",
+    image: "/sushant.jpg",
     bio: "Expert in conversational German and exam preparation strategies.",
   },
 ];
@@ -196,7 +214,7 @@ export default function About() {
                 key={idx}
                 className="group p-8 rounded-3xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-center hover:border-[#5227FF] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
               >
-                <div className="relative w-28 h-28 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-[#5227FF]/20 group-hover:ring-[#5227FF]/50 transition-all duration-300">
+                <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-[#5227FF]/20 group-hover:ring-[#5227FF]/50 transition-all duration-300">
                   <Image
                     src={member.image}
                     alt={member.name}

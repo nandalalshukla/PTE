@@ -1,5 +1,4 @@
 "use client";
-import LocationMap from "@/components/ui/Map";
 import axios from "axios";
 
 import { useState } from "react";
@@ -270,7 +269,15 @@ export default function Contact() {
             {/* Map Placeholder */}
             <div className="h-64 lg:h-80 rounded-3xl overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center border border-gray-200 dark:border-gray-700">
               <div>
-                <LocationMap />
+                <iframe
+                  width="100%"
+                  height="350"
+                  style={{ border: "0", borderRadius: "12px" }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.234411796683!2d85.3302763153918!3d27.696565813208228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198f74f8cb9f%3A0x9eff2599815fb804!2sPASS%20The%20Excellence!5e0!3m2!1sen!2sin!4v1702377600000!5m2!1sen!2sin"
+                ></iframe>
               </div>
             </div>
 

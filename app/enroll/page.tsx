@@ -95,13 +95,21 @@ export default function Enroll() {
     try {
       console.log("Submitting enrollment with data:", formData);
       const res = await axios.post("/api/enroll", formData);
-      
+
       console.log("Enrollment submission response:", res.data);
     } catch (err) {
       console.error("Enrollment submission error:", err);
     }
 
     setIsSubmitting(false);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      course: "",
+      schedule: "",
+      message: "",
+    });
     // Handle success (e.g., show toast, redirect)
   };
 
