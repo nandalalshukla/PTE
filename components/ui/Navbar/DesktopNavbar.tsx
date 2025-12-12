@@ -16,15 +16,15 @@ export default function DesktopNavbar() {
 
   return (
     <nav className="backdrop-blur-xl border-b border-white/20 shadow-lg fixed top-0 left-0 w-full z-50">
-      <div className="w-full mx-auto flex items-center justify-between px-10 py-4">
+      <div className="w-full mx-auto flex items-center justify-between px-4 lg:px-6 xl:px-10 py-3 lg:py-4">
         <Link
           href={"/"}
-          className="text-2xl font-extrabold drop-shadow-lg font-inter"
+          className="text-lg lg:text-xl xl:text-2xl font-extrabold drop-shadow-lg font-inter"
         >
           PassTheExcellence
         </Link>
 
-        <ul className="flex items-center gap-10 text-lg font-medium">
+        <ul className="flex items-center gap-4 lg:gap-6 xl:gap-10 text-sm lg:text-base xl:text-lg font-medium">
           {links.map((link) => {
             const isActive = pathname === link.href;
 

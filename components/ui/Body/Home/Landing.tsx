@@ -1,4 +1,3 @@
-import TiltedCard from "./TiltedCard";
 import ContactNowButton from "@/components/ui/Body/Home/ContactNowButton";
 import OurCoursesButton from "@/components/ui/Body/Home/OurCoursesButton";
 import { IoCall } from "react-icons/io5";
@@ -6,53 +5,55 @@ import LandingVdo from "./LandingVdo";
 
 function Landing() {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mt-15 lg:mt-10  w-full">
-      {/* LEFT TEXT SECTION */}
-      <div className="w-full text-center md:text-left px-2 md:px-0">
-        {/* MAIN HEADING */}
-        <div className="flex flex-col lg:flex-row md:flex-row">
-          <div className="md:basis[46%] lg:basis-[46%]">
-            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight animate__animated animate__fadeInDown group">
-              <span className="inline-block p-2 mb-1">
-                Welcome to{" "}
-                <span className="inline-block origin-[75%_75%] hover:animate-wave animate-on-parent-hover">
-                  👋
-                </span>
+    <div className="w-full px-3 sm:px-4 md:px-6 mt-16 sm:mt-12 md:mt-10">
+      {/* Main container - stacks on mobile/tablet, side-by-side on xl+ */}
+      <div className="mx-auto max-w-7xl flex flex-col xl:flex-row xl:items-center gap-6 md:gap-8 xl:gap-12">
+        {/* LEFT TEXT SECTION */}
+        <div className="w-full xl:w-1/2 text-center xl:text-left">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight animate__animated animate__fadeInDown group">
+            <span className="inline-block p-2 mb-1">
+              Welcome to{" "}
+              <span className="inline-block origin-[75%_75%] hover:animate-wave animate-on-parent-hover">
+                👋
               </span>
-              <br />
-              <div className="w-full lg:w-[95%] md:w-[95%]">
-                <span
-                  className="block w-full bg-gradient-to-r from-[#5227FF] to-[#8A5CFF] text-white 
-    text-center rounded-lg px-2 py-2"
-                >
-                  Pass The Excellence!
-                </span>
-              </div>
-            </h1>
-            {/* SUB HEADING */}
-            <h2 className="text-lg md:text-2xl font-bold md:max-w-2xl animate__animated animate__fadeInDown mt-3 p-2">
-              Nepal&apos;s Leading Online German Language Institute
-            </h2>
-            {/* DESCRIPTION */}
-            <p className="text-sm md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0 font-semibold animate__animated animate__fadeInDown  p-2">
-              Join us and be the part of Nepal&apos;s most interactive,
-              effective and affordable Online German Language Classes.
-            </p>
-            <div className="flex flex-col lg:flex-row md:flex-row gap-4 justify-center md:justify-start items-center mt-4 animate__animated animate__fadeInLeft">
-              <ContactNowButton
-                text="Contact Now"
-                icon={<IoCall />}
-                href="/contact"
-              />
-              <OurCoursesButton
-                text="Our Courses"
-                imgSrc="/a1.jpg"
-                href="/course"
-              />
-            </div>
-          </div>
+            </span>
+            <br />
+            <span className="inline-block w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-lg mx-auto xl:mx-0">
+              <span className="block w-full bg-gradient-to-r from-[#5227FF] to-[#8A5CFF] text-white text-center rounded-lg px-3 py-2 whitespace-nowrap">
+                Pass The Excellence!
+              </span>
+            </span>
+          </h1>
 
-          <div className="w-full  flex justify-center md:justify-end lg:justify-end animate__animated animate__fadeInDown md:basis-[54%] lg:basis-[54%] mt-4">
+          {/* SUB HEADING */}
+          <h2 className="text-base sm:text-lg md:text-xl xl:text-2xl font-bold max-w-xl mx-auto xl:mx-0 animate__animated animate__fadeInDown mt-3 px-2">
+            Nepal&apos;s Leading Online German Language Institute
+          </h2>
+
+          {/* DESCRIPTION */}
+          <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-lg mx-auto xl:mx-0 font-semibold animate__animated animate__fadeInDown mt-2 px-2">
+            Join us and be the part of Nepal&apos;s most interactive, effective
+            and affordable Online German Language Classes.
+          </p>
+
+          {/* BUTTONS */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center xl:justify-start items-center mt-4 sm:mt-5 animate__animated animate__fadeInLeft">
+            <ContactNowButton
+              text="Contact Now"
+              icon={<IoCall />}
+              href="/contact"
+            />
+            <OurCoursesButton
+              text="Our Courses"
+              imgSrc="/a1.jpg"
+              href="/course"
+            />
+          </div>
+        </div>
+
+        {/* RIGHT VIDEO SECTION */}
+        <div className="w-full xl:w-1/2 flex justify-center xl:justify-end animate__animated animate__fadeInDown mt-4 xl:mt-0">
+          <div className="w-full max-w-sm sm:max-w-md md:max-w-lg xl:max-w-xl">
             <LandingVdo videoId="41n_ogE64Xs" />
           </div>
         </div>

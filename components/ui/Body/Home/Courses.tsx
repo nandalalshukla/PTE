@@ -77,8 +77,14 @@ export default function CourseCards() {
 
   // Lock Body Scroll When Modal Opens
   useEffect(() => {
-    if (activeDemoUrl) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "auto";
+    if (activeDemoUrl) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [activeDemoUrl]);
 
   // ESC to close modal
@@ -92,7 +98,7 @@ export default function CourseCards() {
 
   return (
     <>
-      <section className="w-full py-15 px-4 relative overflow-hidden">
+      <section className="w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
           <div className="absolute top-1/4 -left-64 w-96 h-96 bg-[#5227FF]/10 rounded-full blur-3xl" />
@@ -101,21 +107,21 @@ export default function CourseCards() {
 
         <div className="mx-auto w-full max-w-7xl flex flex-col gap-12">
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
+          <div className="text-center max-w-3xl mx-auto px-2">
+            <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
               Our Courses
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Choose Your <span className="text-gradient">Learning Path</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300">
               Comprehensive German language courses designed to take you from
               beginner to advanced levels with expert guidance.
             </p>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             {CourseData.map((course, idx) => (
               <motion.article
                 key={course.title}

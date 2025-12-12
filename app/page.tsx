@@ -9,7 +9,7 @@ import "animate.css";
 
 export default function Home() {
   return (
-    <main className="flex w-full flex-col items-center px-4 md:px-24 py-6 md:py-24 ">
+    <main className="flex w-full flex-col items-center px-3 sm:px-4 md:px-8 lg:px-16 xl:px-24 py-6 md:py-12 lg:py-16 xl:py-24">
       <div className="w-full max-w-[1400px] ">
         {/* TOP SECTION */}
         <Landing />
@@ -20,8 +20,10 @@ export default function Home() {
         {/* PASS CARD SECTION */}
         <SwiperPass />
         <div className="mt-10">
-          <h2 className="text-4xl font-bold text-center">Our Results Speak!</h2>
-          <div className="width-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+            Our Results Speak!
+          </h2>
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-10 place-items-center">
             <ResultCard
               imageSrc="/narayan.png"
               altText="Top score screenshot"
@@ -44,7 +46,9 @@ export default function Home() {
               overlayContent={<span>⭐ B1 Passed</span>}
             />
           </div>
-          <h2 className="text-lg text-gray-600 text-center mt-3 p-2 ">+Many More</h2>
+          <h2 className="text-lg text-gray-600 text-center mt-3 p-2 ">
+            +Many More
+          </h2>
         </div>
       </div>
     </main>

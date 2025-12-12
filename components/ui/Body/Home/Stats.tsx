@@ -47,9 +47,9 @@ const CountUp = ({ value, suffix }: { value: number; suffix: string }) => {
 
 export default function Stats() {
   return (
-    <section className="w-full py-12 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section className="w-full py-8 sm:py-10 lg:py-12 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -59,10 +59,10 @@ export default function Stats() {
               viewport={{ once: true }}
               className="flex flex-col items-center p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
             >
-              <div className="text-4xl md:text-5xl text-[#5227FF] mb-2">
+              <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-[#5227FF] mb-1 sm:mb-2">
                 <CountUp value={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
+              <p className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400 font-medium">
                 {stat.label}
               </p>
             </motion.div>

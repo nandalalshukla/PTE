@@ -68,21 +68,21 @@ const CardData = [
 
 export default function PASSCard() {
   return (
-    <section className="w-full py-16 px-4">
-      <div className="text-center mb-12">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
+    <section className="w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4">
+      <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+        <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
           Why Choose German?
         </span>
-        <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 dark:text-white mb-3 sm:mb-4">
           Unlock Your Potential
         </h2>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           Learning German opens doors to world-class education, career
           opportunities, and cultural experiences.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full max-w-7xl mx-auto">
         {CardData.map((card, index) => (
           <motion.div
             key={index}

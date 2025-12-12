@@ -6,7 +6,7 @@ import { FaFacebook, FaWhatsapp, FaGoogle, FaTiktok } from "react-icons/fa";
 
 export default function Community() {
   return (
-    <section className="relative w-full py-16 px-4 bg-gradient-to-b from-[#f4f1ff] via-white to-[#f7f5ff] dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
+    <section className="relative w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4 bg-gradient-to-b from-[#f4f1ff] via-white to-[#f7f5ff] dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 opacity-70">
         <div className="absolute -left-24 -top-32 h-64 w-64 rounded-full bg-[#5227FF]/8 blur-3xl" />
         <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-purple-400/10 blur-3xl" />
@@ -21,7 +21,7 @@ export default function Community() {
         className="glass rounded-3xl overflow-hidden max-w-7xl mx-auto flex flex-col lg:flex-row items-center relative z-10"
       >
         {/* Image Section */}
-        <div className="w-full lg:w-1/2 relative h-[400px] lg:h-[500px]">
+        <div className="w-full lg:w-1/2 relative h-[280px] sm:h-[350px] lg:h-[450px] xl:h-[500px]">
           <Image
             src={learnGermanInNepali}
             alt="Community"
@@ -33,16 +33,16 @@ export default function Community() {
         </div>
 
         {/* Content Section */}
-        <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-          <div className="mb-8">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
+        <div className="w-full lg:w-1/2 p-4 sm:p-6 lg:p-10 xl:p-12 flex flex-col justify-center">
+          <div className="mb-4 sm:mb-6 lg:mb-8">
+            <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
               Join Our Community
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               Connect with Learners <br />
               <span className="text-[#5227FF]">Across Nepal</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               Be part of the largest German Language Learners Community in
               Nepal. Get access to free study materials, latest updates, and
               connect with fellow students.
@@ -54,9 +54,9 @@ export default function Community() {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#1877F2] text-white font-semibold hover:bg-[#1877F2]/90 transition-all hover:-translate-y-1 shadow-lg shadow-blue-500/20"
+              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-[#1877F2] text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-[#1877F2]/90 transition-all hover:-translate-y-1 shadow-lg shadow-blue-500/20"
             >
-              <FaFacebook className="text-xl" />
+              <FaFacebook className="text-base sm:text-lg lg:text-xl" />
               Facebook Group
             </a>
 
@@ -64,9 +64,9 @@ export default function Community() {
               href="https://whatsapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#25D366] text-white font-semibold hover:bg-[#25D366]/90 transition-all hover:-translate-y-1 shadow-lg shadow-green-500/20"
+              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-[#25D366] text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-[#25D366]/90 transition-all hover:-translate-y-1 shadow-lg shadow-green-500/20"
             >
-              <FaWhatsapp className="text-xl" />
+              <FaWhatsapp className="text-base sm:text-lg lg:text-xl" />
               WhatsApp Group
             </a>
 
@@ -74,9 +74,9 @@ export default function Community() {
               href="https://google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#DB4437] text-white font-semibold hover:bg-[#DB4437]/90 transition-all hover:-translate-y-1 shadow-lg shadow-red-500/20"
+              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-[#DB4437] text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-[#DB4437]/90 transition-all hover:-translate-y-1 shadow-lg shadow-red-500/20"
             >
-              <FaGoogle className="text-xl" />
+              <FaGoogle className="text-base sm:text-lg lg:text-xl" />
               Google Reviews
             </a>
 
@@ -84,9 +84,9 @@ export default function Community() {
               href="https://tiktok.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-black dark:bg-gray-800 text-white font-semibold hover:bg-gray-900 dark:hover:bg-gray-700 transition-all hover:-translate-y-1 shadow-lg shadow-gray-500/20"
+              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-black dark:bg-gray-800 text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-gray-900 dark:hover:bg-gray-700 transition-all hover:-translate-y-1 shadow-lg shadow-gray-500/20"
             >
-              <FaTiktok className="text-xl" />
+              <FaTiktok className="text-base sm:text-lg lg:text-xl" />
               TikTok
             </a>
           </div>

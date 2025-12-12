@@ -105,16 +105,16 @@ const testimonials = [
 
 export default function SwiperPass() {
   return (
-    <section className="w-full py-10 bg-gray-50 dark:bg-gray-900/50 transition-colors">
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4">
+    <section className="w-full py-8 sm:py-10 lg:py-12 bg-gray-50 dark:bg-gray-900/50 transition-colors">
+      <div className="mx-auto max-w-7xl px-2 sm:px-4">
+        <div className="text-center mb-8 sm:mb-10 lg:mb-12 px-2">
+          <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
             Testimonials
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             Success <span className="text-gradient">Stories</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Hear from our students who have successfully started their German
             language journey with us.
           </p>
