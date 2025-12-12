@@ -6,25 +6,25 @@ const teamMembers = [
   {
     name: "Purushottam Shukla",
     role: "Founder & Lead Instructor",
-    image: "/purushottam.jpg",
+    image: "/purushottam1.jpg",
     bio: "Passionate German language educator with years of experience helping Nepali students achieve their language goals.",
   },
   {
     name: "Unish Timsina",
     role: "Senior Instructor",
-    image: "/unish.jpg",
+    image: "/unish1.jpg",
     bio: "Specialized in A1-B1 curriculum development and interactive teaching methodologies.",
   },
   {
     name: "Sushant Acharya",
     role: "Instructor",
-    image: "/sushant.jpg",
+    image: "/sushant1.jpg",
     bio: "Expert in conversational German and exam preparation strategies.",
   },
   {
     name: "Aarushi Singh",
     role: "Instructor",
-    image: "/aarushi.jpg",
+    image: "/aarushi1.jpg",
     bio: "Specialized in A1-B1 curriculum development and interactive teaching methodologies.",
   },
   {
