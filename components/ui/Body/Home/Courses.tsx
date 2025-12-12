@@ -110,12 +110,6 @@ export default function CourseCards() {
   return (
     <>
       <section className="w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-          <div className="absolute top-1/4 -left-64 w-96 h-96 bg-[#5227FF]/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        </div>
-
         <div className="mx-auto w-full max-w-7xl flex flex-col gap-12">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto px-2">
@@ -123,7 +117,7 @@ export default function CourseCards() {
               Our Courses
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-              Choose Your <span className="text-gradient">Learning Path</span>
+              Choose Your <span className="text-[#5227FF]">Learning Path</span>
             </h2>
             <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300">
               Comprehensive German language courses designed to take you from
@@ -141,13 +135,12 @@ export default function CourseCards() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
                 className={cn(
-                  // condition for showing ONLY the card with index === 2 on md
                   idx === 3 ? "hidden lg:hidden md:block" : "block",
 
                   "group relative flex flex-col h-full rounded-3xl p-1",
 
                   course.popular
-                    ? "bg-gradient-to-b from-[#5227FF] to-purple-600"
+                    ? "bg-[#5227FF]"
                     : "bg-gray-200 dark:bg-gray-800"
                 )}
               >
@@ -161,7 +154,6 @@ export default function CourseCards() {
 
                   {/* Image */}
                   <div className="mx-auto mb-6 relative w-full h-48 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 dark:to-black/10 rounded-xl" />
                     <Image
                       src={course.imageSrc}
                       alt={course.title}

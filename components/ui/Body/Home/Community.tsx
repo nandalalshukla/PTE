@@ -6,22 +6,16 @@ import { FaFacebook, FaWhatsapp, FaGoogle, FaTiktok } from "react-icons/fa";
 
 export default function Community() {
   return (
-    <section className="relative w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4 bg-gradient-to-b from-[#f4f1ff] via-white to-[#f7f5ff] dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 opacity-70">
-        <div className="absolute -left-24 -top-32 h-64 w-64 rounded-full bg-[#5227FF]/8 blur-3xl" />
-        <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-purple-400/10 blur-3xl" />
-        <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-blue-400/10 blur-3xl" />
-      </div>
-
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="glass rounded-3xl overflow-hidden max-w-7xl mx-auto flex flex-col lg:flex-row items-center relative z-10"
+        className="relative rounded-[2.5rem] overflow-hidden max-w-7xl mx-auto flex flex-col lg:flex-row items-center bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-2xl"
       >
         {/* Image Section */}
-        <div className="w-full lg:w-1/2 relative h-[280px] sm:h-[350px] lg:h-[450px] xl:h-[500px]">
+        <div className="w-full lg:w-1/2 relative h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] overflow-hidden">
           <Image
             src={learnGermanInNepali}
             alt="Community"
@@ -29,34 +23,37 @@ export default function Community() {
             className="object-cover hover:scale-105 transition-transform duration-700"
             placeholder="blur"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-transparent" />
         </div>
 
         {/* Content Section */}
-        <div className="w-full lg:w-1/2 p-4 sm:p-6 lg:p-10 xl:p-12 flex flex-col justify-center">
-          <div className="mb-4 sm:mb-6 lg:mb-8">
-            <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+        <div className="w-full lg:w-1/2 p-8 sm:p-10 lg:p-16 flex flex-col justify-center bg-white dark:bg-[#121212]">
+          <div className="mb-8 sm:mb-10">
+            <motion.span
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4"
+            >
               Join Our Community
-            </span>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
+            </motion.span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
               Connect with Learners <br />
               <span className="text-[#5227FF]">Across Nepal</span>
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               Be part of the largest German Language Learners Community in
               Nepal. Get access to free study materials, latest updates, and
               connect with fellow students.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-[#1877F2] text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-[#1877F2]/90 transition-all hover:-translate-y-1 shadow-lg shadow-blue-500/20"
+              className="group flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#1877F2]/10 hover:bg-[#1877F2] text-[#1877F2] hover:text-white font-semibold transition-all duration-300 border border-[#1877F2]/20 hover:border-[#1877F2] hover:shadow-lg hover:shadow-[#1877F2]/30"
             >
-              <FaFacebook className="text-base sm:text-lg lg:text-xl" />
+              <FaFacebook className="text-xl group-hover:scale-110 transition-transform" />
               Facebook Group
             </a>
 
@@ -64,9 +61,9 @@ export default function Community() {
               href="https://whatsapp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-[#25D366] text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-[#25D366]/90 transition-all hover:-translate-y-1 shadow-lg shadow-green-500/20"
+              className="group flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366] text-[#25D366] hover:text-white font-semibold transition-all duration-300 border border-[#25D366]/20 hover:border-[#25D366] hover:shadow-lg hover:shadow-[#25D366]/30"
             >
-              <FaWhatsapp className="text-base sm:text-lg lg:text-xl" />
+              <FaWhatsapp className="text-xl group-hover:scale-110 transition-transform" />
               WhatsApp Group
             </a>
 
@@ -74,9 +71,9 @@ export default function Community() {
               href="https://google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-[#DB4437] text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-[#DB4437]/90 transition-all hover:-translate-y-1 shadow-lg shadow-red-500/20"
+              className="group flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#DB4437]/10 hover:bg-[#DB4437] text-[#DB4437] hover:text-white font-semibold transition-all duration-300 border border-[#DB4437]/20 hover:border-[#DB4437] hover:shadow-lg hover:shadow-[#DB4437]/30"
             >
-              <FaGoogle className="text-base sm:text-lg lg:text-xl" />
+              <FaGoogle className="text-xl group-hover:scale-110 transition-transform" />
               Google Reviews
             </a>
 
@@ -84,9 +81,9 @@ export default function Community() {
               href="https://tiktok.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-6 py-2.5 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl bg-black dark:bg-gray-800 text-white text-xs sm:text-sm lg:text-base font-semibold hover:bg-gray-900 dark:hover:bg-gray-700 transition-all hover:-translate-y-1 shadow-lg shadow-gray-500/20"
+              className="group flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black dark:hover:bg-white text-gray-900 dark:text-white hover:text-white dark:hover:text-black font-semibold transition-all duration-300 border border-gray-200 dark:border-white/10 hover:border-black dark:hover:border-white hover:shadow-lg hover:shadow-gray-500/30"
             >
-              <FaTiktok className="text-base sm:text-lg lg:text-xl" />
+              <FaTiktok className="text-xl group-hover:scale-110 transition-transform" />
               TikTok
             </a>
           </div>

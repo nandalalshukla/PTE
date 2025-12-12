@@ -1,4 +1,5 @@
 "use client";
+import LocationMap from "@/components/ui/Map";
 import axios from "axios";
 
 import { useState } from "react";
@@ -46,31 +47,29 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true)
-          try {
-            const res = await axios.post("/api/send-email", formData);
-            console.log(res.data);
-            alert("Email sent!");
-          } catch (err) {
-            console.error(err);
-            alert("Failed to send email");
-          }
+    setIsSubmitting(true);
+    try {
+      const res = await axios.post("/api/send-email", formData);
+      console.log(res.data);
+      alert("Email sent!");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to send email");
+    }
     setIsSubmitting(false);
     setSubmitted(true);
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
-
   return (
     <main className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#5227FF]/10 via-transparent to-[#8A5CFF]/10 dark:from-[#5227FF]/5 dark:to-[#8A5CFF]/5" />
         <div className="relative mx-auto max-w-6xl px-4 py-16 text-center">
           <span className="inline-block mb-4 px-4 py-1.5 text-sm font-medium text-[#5227FF] bg-[#5227FF]/10 rounded-full">
             Get In Touch
           </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-gray-900 via-[#5227FF] to-[#8A5CFF] dark:from-white dark:via-[#a68bff] dark:to-[#c4b5fd] bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 dark:text-white">
             Contact Us
           </h1>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -86,7 +85,7 @@ export default function Contact() {
           {contactInfo.map((info, idx) => (
             <div
               key={idx}
-              className="group p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-[#5227FF] transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
             >
               <span className="text-4xl mb-4 block group-hover:scale-110 transition-transform duration-300">
                 {info.icon}
@@ -208,7 +207,7 @@ export default function Contact() {
                         <option value="">Select a subject</option>
                         <option value="enrollment">Course Enrollment</option>
                         <option value="inquiry">General Inquiry</option>
-                        <option value="support">Support</option>
+                        <option value="support">Collaborate</option>
                         <option value="feedback">Feedback</option>
                       </select>
                     </div>
@@ -229,8 +228,8 @@ export default function Contact() {
                     />
                   </div>
                   <button
-                      type="submit"
-                      onClick={()=>console.log(formData)}
+                    type="submit"
+                    onClick={() => console.log(formData)}
                     disabled={isSubmitting}
                     className="w-full py-4 bg-[#5227FF] text-white font-bold rounded-xl hover:bg-[#4520d4] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
@@ -269,20 +268,14 @@ export default function Contact() {
           {/* Info Side */}
           <div className="order-1 lg:order-2 space-y-8">
             {/* Map Placeholder */}
-            <div className="h-64 lg:h-80 rounded-3xl overflow-hidden bg-gradient-to-br from-[#5227FF]/20 to-[#8A5CFF]/20 flex items-center justify-center border border-[#5227FF]/20">
-              <div className="text-center">
-                <span className="text-6xl mb-4 block">🗺️</span>
-                <p className="text-gray-600 dark:text-gray-400 font-medium">
-                  Kathmandu, Nepal
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-500">
-                  Online classes available worldwide
-                </p>
+            <div className="h-64 lg:h-80 rounded-3xl overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center border border-gray-200 dark:border-gray-700">
+              <div>
+                <LocationMap />
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-[#5227FF]/5 to-[#8A5CFF]/10 dark:from-[#5227FF]/10 dark:to-[#8A5CFF]/5 border border-[#5227FF]/20">
+            <div className="p-8 rounded-3xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
               <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">
                 Connect With Us
               </h3>
@@ -291,7 +284,7 @@ export default function Contact() {
                   <a
                     key={idx}
                     href={social.href}
-                    className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-[#5227FF] transition-all duration-300 hover:shadow-lg group"
+                    className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-md group"
                   >
                     <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
                       {social.icon}

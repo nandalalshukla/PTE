@@ -107,8 +107,7 @@ export default function TiltedCard({
       )}
 
       <motion.div
-        className={`relative [transform-style:preserve-3d] bg-[linear-gradient(135deg,#e5d4ff,#c8a6ff,#9f7bff,#7fa5ff)]
-  dark:bg-[linear-gradient(135deg,#2a2256,#3F3E81,#635F9C)] border-[2px] p-4 rounded-lg ${imageHeight} ${imageWidth}`}
+        className={`relative [transform-style:preserve-3d] bg-gradient-to-br from-white/40 to-white/10 dark:from-white/10 dark:to-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 p-4 rounded-[1.5rem] shadow-xl ${imageHeight} ${imageWidth}`}
         style={{
           rotateX,
           rotateY,
@@ -118,11 +117,11 @@ export default function TiltedCard({
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="w-full h-full object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
+          className="w-full h-full object-cover rounded-[1rem] will-change-transform [transform:translateZ(0)]"
         />
 
         {displayOverlayContent && overlayContent && (
-          <motion.div className="absolute text-white top-1 left-1 p-1 border-3 border-gray-600 rounded-[8px] bg-gradient-to-r from-[#5227FF] to-[#7440f8] shadow-[0_8px_32px_rgba(118,70,255,0.55)] dark:border-[#635F9C] z-[2] will-change-transform [transform:translateZ(30px)]">
+          <motion.div className="absolute text-white top-4 left-4 p-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg z-[2] will-change-transform [transform:translateZ(30px)]">
             {overlayContent}
           </motion.div>
         )}

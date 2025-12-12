@@ -105,34 +105,37 @@ const testimonials = [
 
 export default function SwiperPass() {
   return (
-    <section className="relative w-full py-8 sm:py-10 lg:py-12 bg-gradient-to-b from-[#faf9ff] via-gray-50 to-[#faf9ff] dark:from-gray-900/70 dark:via-gray-900/50 dark:to-gray-900/70 transition-colors overflow-hidden">
-      {/* Animated Background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-10 right-0 w-64 h-64 rounded-full bg-[#5227FF]/8 blur-3xl animate-blob" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-purple-400/8 blur-3xl animate-blob animation-delay-4000" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-2 sm:px-4">
-        <div className="text-center mb-8 sm:mb-10 lg:mb-12 px-2">
-          <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4"
+          >
             Testimonials
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-            Success <span className="text-gradient">Stories</span>
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Student <span className="text-[#5227FF]">Success Stories</span>
+          </motion.h2>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
             Hear from our students who have successfully started their German
             language journey with us.
           </p>
         </div>
 
-        <div className="relative px-2">
+        <div className="relative px-2 sm:px-12">
           {/* Navigation Buttons */}
-          <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center text-[#5227FF] hover:scale-110 transition-transform disabled:opacity-50 hidden md:flex">
-            <HiArrowLeft size={24} />
+          <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg flex items-center justify-center text-gray-800 dark:text-white hover:bg-[#5227FF] hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hidden md:flex">
+            <HiArrowLeft className="w-6 h-6" />
           </button>
-          <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center text-[#5227FF] hover:scale-110 transition-transform disabled:opacity-50 hidden md:flex">
-            <HiArrowRight size={24} />
+          <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg flex items-center justify-center text-gray-800 dark:text-white hover:bg-[#5227FF] hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hidden md:flex">
+            <HiArrowRight className="w-6 h-6" />
           </button>
 
           <Swiper
@@ -142,8 +145,9 @@ export default function SwiperPass() {
             spaceBetween={30}
             pagination={{
               clickable: true,
-              bulletActiveClass:
-                "swiper-pagination-bullet-active !bg-[#5227FF]",
+              bulletActiveClass: "bg-[#5227FF] w-8 rounded-full",
+              bulletClass:
+                "inline-block w-2 h-2 bg-gray-300 rounded-full mx-1 transition-all duration-300",
             }}
             navigation={{
               nextEl: ".swiper-button-next-custom",
@@ -155,7 +159,7 @@ export default function SwiperPass() {
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            className="!pb-14"
+            className="!pb-16"
           >
             {testimonials.map((item) => (
               <SwiperSlide key={item.index} className="h-auto">
@@ -165,30 +169,36 @@ export default function SwiperPass() {
                   viewport={{ once: true }}
                   className={cn(
                     "h-full flex flex-col",
-                    "rounded-2xl pl-8 py-8 pr-2",
-                    "bg-white dark:bg-gray-800",
-                    "border border-gray-100 dark:border-gray-700",
-                    "shadow-sm hover:shadow-xl",
-                    "transition-all duration-300"
+                    "rounded-[2rem] pl-8 py-8 pr-4",
+                    "bg-white dark:bg-gray-900",
+                    "border border-gray-200 dark:border-gray-800",
+                    "shadow-lg hover:shadow-xl",
+                    "transition-all duration-500 group"
                   )}
                 >
-                  <div className="mb-6 text-[#5227FF]/20">
-                    <FaQuoteLeft size={40} />
+                  <div className="mb-6">
+                    <div className="w-12 h-12 rounded-full bg-[#5227FF]/10 flex items-center justify-center text-[#5227FF] mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <FaQuoteLeft className="text-xl" />
+                    </div>
+
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow overflow-y-auto max-h-[200px] pr-2 custom-scrollbar">
+                      {item.text}
+                    </p>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 flex-grow overflow-y-auto max-h-[200px] pr-2 custom-scrollbar">
-                    {item.text}
-                  </p>
-
-                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-gray-100 dark:border-gray-700">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#5227FF] to-purple-600 flex items-center justify-center text-white font-bold text-xl">
-                      {item.name.charAt(0)}
+                  <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[#5227FF] p-[2px]">
+                      <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center text-lg font-bold text-[#5227FF] overflow-hidden">
+                        {item.name.charAt(0)}
+                      </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900 dark:text-white">
+                      <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-[#5227FF] transition-colors">
                         {item.name}
-                      </h3>
-                      <p className="text-sm text-[#5227FF]">Student</p>
+                      </h4>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">
+                        Student
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -196,37 +206,30 @@ export default function SwiperPass() {
             ))}
           </Swiper>
         </div>
-        <div className="mt-12 flex flex-col justify-center items-center gap-6">
-          <div className="text-center flex flex-col justify-center items-center">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white p-2">
+
+        <div className="mt-16 flex flex-col justify-center items-center gap-8">
+          <div className="text-center flex flex-col justify-center items-center bg-white/30 dark:bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
               4.9 Stars Rating on Google
             </h2>
-            <span className="p-3 text-center">
+            <div className="p-2">
               <GoogleRating />
-            </span>
+            </div>
           </div>
-          <div className="flex justify-center items-center">
-            <a
-              href="https://g.page/r/CQS4X4GZJf-eEBM/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5
-             rounded-lg border
-             bg-white dark:bg-[#1a1a1a]
-             border-gray-300 dark:border-gray-700
-             text-gray-800 dark:text-gray-200
-             shadow-sm hover:shadow-md
-             hover:bg-gray-50 dark:hover:bg-[#252525]
-             transition-all duration-200"
-            >
-              <img
-                src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
-                className="w-5 h-5"
-                alt="Google Logo"
-              />
-              Review Us on Google
-            </a>
-          </div>
+
+          <a
+            href="https://g.page/r/CQS4X4GZJf-eEBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/50 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 text-gray-800 dark:text-white font-semibold hover:bg-[#5227FF] hover:text-white hover:border-[#5227FF] transition-all duration-300 shadow-lg hover:shadow-[#5227FF]/20 group"
+          >
+            <img
+              src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+              className="w-6 h-6 group-hover:brightness-0 group-hover:invert transition-all"
+              alt="Google Logo"
+            />
+            Review Us on Google
+          </a>
         </div>
       </div>
     </section>

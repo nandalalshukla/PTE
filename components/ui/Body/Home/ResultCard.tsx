@@ -19,22 +19,24 @@ export default function ResultCard({
 }: ResultCardProps) {
   return (
     <figure className="relative flex flex-col items-center justify-center w-full max-w-[320px] sm:max-w-[280px] md:max-w-[300px] lg:max-w-[340px] xl:max-w-[360px]">
-      <div className="relative w-full aspect-[4/5] bg-[linear-gradient(135deg,#e5d4ff,#c8a6ff,#9f7bff,#7fa5ff)] dark:bg-[linear-gradient(135deg,#2a2256,#3F3E81,#635F9C)] border-[2px] p-3 sm:p-4 rounded-2xl shadow-lg drop-shadow-2xl transition-transform duration-600 hover:scale-103 ease-in-out">
-        <img
-          src={imageSrc}
-          alt={altText}
-          className="w-full h-full object-cover rounded-xl"
-        />
+      <div className="relative w-full aspect-[4/5] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-3 sm:p-4 rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 ease-in-out group">
+        <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden">
+          <img
+            src={imageSrc}
+            alt={altText}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        </div>
 
         {displayOverlayContent && overlayContent && (
-          <div className="absolute text-white top-1 left-1 p-1 border-3 border-gray-600 rounded-[8px] bg-gradient-to-r from-[#5227FF] to-[#7440f8] shadow-[0_8px_32px_rgba(118,70,255,0.55)] dark:border-[#635F9C] z-[2]">
+          <div className="absolute text-white top-0 left-0 p-2 rounded-xl bg-[#5227FF] shadow-lg z-[2]">
             {overlayContent}
           </div>
         )}
       </div>
 
       {showTooltip && captionText && (
-        <figcaption className="mt-2 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] shadow-sm">
+        <figcaption className="mt-4 px-4 py-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-lg">
           {captionText}
         </figcaption>
       )}

@@ -8,12 +8,14 @@ interface ContactNowButtonProps {
   text: string;
   icon: React.ReactNode;
   href?: string;
+  className?: string;
 }
 
 const ContactNowButton: React.FC<ContactNowButtonProps> = ({
   text,
   icon,
   href = "/",
+  className,
 }) => {
   return (
     <Link
@@ -23,42 +25,12 @@ const ContactNowButton: React.FC<ContactNowButtonProps> = ({
         "pl-1.5 pr-12 py-1.5 lg:pl-2 lg:pr-14 lg:py-2 xl:pr-16 rounded-full",
         "bg-white dark:bg-white/5",
         "text-[#5227FF] dark:text-white",
-        "shadow-[0_0_0_2px_rgba(82,39,255,0.1)]",
-        "hover:shadow-[0_0_0_4px_rgba(82,39,255,0.2)] hover:-translate-y-0.5",
+        "shadow-sm hover:shadow-md",
         "transition-all duration-300 ease-out",
         "border border-[#5227FF]/20 dark:border-white/10",
-        "backdrop-blur-md"
+        className
       )}
     >
-      {/* Visible Premium Pulse */}
-      <div
-        className="
-    absolute inset-[-3px]
-    rounded-full
-    ring-1 ring-[#5227FF]/40 dark:ring-white/30
-    shadow-[0_0_3px_rgba(82,39,255,0.35)]
-    dark:shadow-[0_0_3px_rgba(255,255,255,0.25)]
-    animate-premium-pulse
-  "
-      />
-
-      {/* Visible Elegant Shimmer */}
-      <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
-        <div
-          className="
-      absolute inset-y-0
-      w-[105%]
-      -translate-x-[130%]
-      bg-gradient-to-r
-      from-transparent
-      via-[#5227FF]/35 dark:via-white/30
-      to-transparent
-      skew-x-12
-      animate-premium-shimmer
-    "
-        />
-      </div>
-
       {/* Icon Container (Left) */}
       <div className="relative w-8 h-8 lg:w-9 lg:h-9 xl:w-10 xl:h-10 rounded-full overflow-hidden border border-[#5227FF]/10 dark:border-white/10 shrink-0 bg-[#5227FF]/5 dark:bg-white/10 flex items-center justify-center shadow-inner z-10 text-[#5227FF] dark:text-white">
         <div className="text-lg lg:text-xl group-hover:scale-110 transition-transform duration-500">

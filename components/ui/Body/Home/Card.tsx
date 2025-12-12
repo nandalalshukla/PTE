@@ -68,97 +68,83 @@ const CardData = [
 
 export default function PASSCard() {
   return (
-    <section className="relative w-full py-10 sm:py-12 lg:py-16 px-2 sm:px-4 overflow-hidden">
-      {/* Animated Background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-[#5227FF]/8 blur-3xl animate-blob" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-purple-500/8 blur-3xl animate-blob animation-delay-2000" />
-      </div>
-
-      <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-        <span className="inline-block px-3 sm:px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
-          Why Choose German?
-        </span>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 dark:text-white mb-3 sm:mb-4">
-          Unlock Your Potential
-        </h2>
-        <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Learning German opens doors to world-class education, career
-          opportunities, and cultural experiences.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 w-full max-w-7xl mx-auto">
-        {CardData.map((card, index) => (
-          <motion.div
-            key={index}
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="group relative h-full"
+            className="inline-block px-4 py-1.5 rounded-full bg-[#5227FF]/10 text-[#5227FF] font-semibold text-sm mb-4"
           >
-            <div className="relative rounded-2xl p-[1px] bg-white/60 dark:bg-white/10">
-              <div className="h-full rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-md transition-transform duration-200 group-hover:-translate-y-1 p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl text-white"
-                    style={{
-                      backgroundImage: `linear-gradient(135deg, ${card.accentFrom}, ${card.accentTo})`,
-                    }}
-                  >
-                    {card.icon}
-                  </div>
-                  <div className="inline-block max-w-full space-y-1">
-                    <h3
-                      className="
-    inline text-lg font-bold text-gray-900 dark:text-white leading-tight
-    whitespace-normal break-words
+            Why Choose German?
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+          >
+            Unlock Your <span className="text-[#5227FF]">Potential</span>
+          </motion.h2>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Learning German opens doors to world-class education, career
+            opportunities, and cultural experiences.
+          </p>
+        </div>
 
-    bg-no-repeat
-    [background-size:0%_2px]
-    [background-position:0%_100%]
-
-    group-hover:[background-size:100%_2px]
-    group-hover:[background-position:0%_100%]
-
-    transition-[background-size,background-position]
-    duration-1000
-    ease-[cubic-bezier(0.22,1,0.36,1)]
-
-    [box-decoration-break:clone]
-    [-webkit-box-decoration-break:clone]
-  "
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+          {CardData.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative h-full"
+            >
+              <div className="relative h-full rounded-[2rem] p-1 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-500">
+                <div className="relative h-full bg-white dark:bg-[#121212] rounded-[1.8rem] p-8 flex flex-col">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl text-white shadow-lg transform group-hover:scale-110 transition-transform duration-300"
                       style={{
-                        backgroundImage: `linear-gradient(90deg, ${card.accentFrom}, ${card.accentTo})`,
+                        backgroundColor: card.accentFrom,
+                        boxShadow: `0 10px 20px -5px ${card.accentFrom}50`,
                       }}
                     >
-                      {card.title}
-                    </h3>
+                      {card.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-[#5227FF] transition-colors">
+                        {card.title}
+                      </h3>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {card.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-2.5 py-1 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-200 border border-gray-100 dark:border-gray-700"
-                      style={{
-                        backgroundColor: `${card.accentFrom}10`,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {card.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 rounded-lg text-xs font-semibold border border-white/20"
+                        style={{
+                          backgroundColor: `${card.accentFrom}15`,
+                          color: card.accentFrom,
+                          borderColor: `${card.accentFrom}30`,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {card.description}
-                </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-auto">
+                    {card.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -8,9 +8,9 @@ export default function DesktopNavbar() {
 
   const links = [
     { name: "Courses", href: "/courses" },
-    { name: "About Us", href: "/about" },
-    { name: "Instructors", href: "/instructors" },
+    { name: "Enroll", href: "/enroll" },
     { name: "Study", href: "/study" },
+    { name: "About Us", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 

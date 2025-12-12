@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
-    const { name, email, message, phone, subject } = await req.json();
+    const { name, email, message, phone, course, schedule } = await req.json();
     console.log("in the try block trying to send email");
     // Setup SMTP transporter
     const transporter = nodemailer.createTransport({
@@ -19,9 +19,9 @@ export async function POST(req) {
     await transporter.sendMail({
       from: `"Website Contact" <${process.env.SMTP_SENDER}>`,
       to: process.env.SMTP_RECEIVER,
-      subject: `New message from website regarding: ${subject} `,
+      subject: `Willing to enroll in ${course}`,
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2>Dear Sir, I want to enroll in the ${course} course and my prefered schedule is ${schedule}</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
